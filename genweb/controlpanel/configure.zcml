@@ -2,10 +2,18 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="genweb.controlpanel">
 
   <five:registerPackage package="." initialize=".initialize" />
+
+  <browser:page
+    name="genweb-controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".controlpanel.GenwebControlPanel"
+    permission="cmf.ManagePortal"
+    />
 
   <genericsetup:registerProfile
       name="default"
@@ -15,5 +23,5 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <!-- -*- extra stuff goes here -*- -->
-  
+
 </configure>
