@@ -30,31 +30,35 @@ class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
 
     schema = IGenwebControlPanelSettings
     id = "GenwebControlPanelSettingsForm"
-    label = _(u"Genweb settings")
-    description = _(u"help_discussion_settings_editform",
-                    default=u"Some discussion related settings are not "
-                             "located in the Discussion Control Panel.\n"
-                             "To enable comments for a specific content type, "
-                             "go to the Types Control Panel of this type and "
-                             "choose \"Allow comments\".\n"
-                             "To enable the moderation workflow for comments, "
-                             "go to the Types Control Panel, choose "
-                             "\"Comment\" and set workflow to "
-                             "\"Comment Review Workflow\".")
+    label = _(u"Genweb UPC settings")
+    description = _(u"help_genweb_settings_editform",
+                    default=u"Configuració de Genweb UPC ...")
 
     def updateFields(self):
         super(GenwebControlPanelSettingsForm, self).updateFields()
-        # self.fields['globally_enabled'].widgetFactory = \
+        # self.fields['contacte_BBBDD_or_page'].widgetFactory = \
         #     SingleCheckBoxFieldWidget
-        # self.fields['moderation_enabled'].widgetFactory = \
+        # self.fields['contacte_al_peu'].widgetFactory = \
         #     SingleCheckBoxFieldWidget
-        # self.fields['anonymous_comments'].widgetFactory = \
+        # self.fields['directori_upc'].widgetFactory = \
         #     SingleCheckBoxFieldWidget
-        # self.fields['show_commenter_image'].widgetFactory = \
+        # self.fields['contacte_no_upcmaps'].widgetFactory = \
         #     SingleCheckBoxFieldWidget
-        # self.fields['moderator_notification_enabled'].widgetFactory = \
+        # self.fields['contrast_colors_bn'].widgetFactory = \
         #     SingleCheckBoxFieldWidget
-        # self.fields['user_notification_enabled'].widgetFactory = \
+        # self.fields['imatge_capsalera'].widgetFactory = \
+        #     SingleCheckBoxFieldWidget
+        # self.fields['menu_horitzontal'].widgetFactory = \
+        #     SingleCheckBoxFieldWidget
+        # self.fields['icones_xarxes_socials'].widgetFactory = \
+        #     SingleCheckBoxFieldWidget
+        # self.fields['amaga_identificacio'].widgetFactory = \
+        #     SingleCheckBoxFieldWidget
+        # self.fields['idiomes_google_translate_link_ca'].widgetFactory = \
+        #     SingleCheckBoxFieldWidget
+        # self.fields['idiomes_google_translate_link_es'].widgetFactory = \
+        #     SingleCheckBoxFieldWidget
+        # self.fields['idiomes_google_translate_link_en'].widgetFactory = \
         #     SingleCheckBoxFieldWidget
 
     def updateWidgets(self):
@@ -76,7 +80,7 @@ class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
         self.applyChanges(data)
         IStatusMessage(self.request).addStatusMessage(_(u"Changes saved"),
                                                       "info")
-        self.context.REQUEST.RESPONSE.redirect("@@discussion-settings")
+        self.context.REQUEST.RESPONSE.redirect("@@genweb-controlpanel")
 
     @button.buttonAndHandler(_('Cancel'), name='cancel')
     def handleCancel(self, action):

@@ -8,6 +8,11 @@
 
   <five:registerPackage package="." initialize=".initialize" />
 
+  <browser:resource
+      name="cpgenweb.png"
+      file="cpgenweb.png"
+      />
+
   <browser:page
     name="genweb-controlpanel"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
@@ -22,6 +27,5 @@
       description="Installs the genweb.controlpanel package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-  <!-- -*- extra stuff goes here -*- -->
 
 </configure>
