@@ -24,8 +24,8 @@ class IGenwebControlPanelSettings(model.Schema):
     model.fieldset('Specific',
                   _(u'Specific'),
                   fields=['especific1', 'especific2',
-                          'contrast_colors_bn', 'imatge_capsalera', 'menu_horitzontal',
-                          'icones_xarxes_socials', 'amaga_identificacio',
+                          'contrast_colors_bn', 'treu_imatge_capsalera', 'treu_menu_horitzontal',
+                          'treu_icones_xarxes_socials', 'amaga_identificacio',
                           'idiomes_google_translate_link_ca', 'idiomes_google_translate_link_es', 'idiomes_google_translate_link_en'])
 
     model.fieldset('Master',
@@ -200,28 +200,28 @@ class IGenwebControlPanelSettings(model.Schema):
         default=False,
         )
 
-    imatge_capsalera = schema.Bool(
-        title=_(u"imatge_capsalera",
+    treu_imatge_capsalera = schema.Bool(
+        title=_(u"treu_imatge_capsalera",
                 default=u"Treu la imatge de la capçalera"),
-        description=_(u"help_imatge_capsalera",
+        description=_(u"help_treu_imatge_capsalera",
                 default=u"Treiem la imatge de la capçalera per ..."),
         required=False,
         default=False,
         )
 
-    menu_horitzontal = schema.Bool(
-        title=_(u"menu_horitzontal",
+    treu_menu_horitzontal = schema.Bool(
+        title=_(u"treu_menu_horitzontal",
                 default="Treu el menú horitzontal"),
-        description=_(u"help_menu_horitzontal",
+        description=_(u"help_treu_menu_horitzontal",
                 default=u"Treu el menú horitzontal ..."),
         required=False,
         default=False,
         )
 
-    icones_xarxes_socials = schema.Bool(
-        title=_(u"icones_xarxes_socials",
+    treu_icones_xarxes_socials = schema.Bool(
+        title=_(u"treu_icones_xarxes_socials",
                 default="Treu les icones per compartir en xarxes socials"),
-        description=_(u"help_icones_xarxes_socials",
+        description=_(u"help_treu_icones_xarxes_socials",
                 default=u"Treu les icones per compartir en xarxes socials ..."),
         required=False,
         default=False,
@@ -273,101 +273,3 @@ class IGenwebControlPanelSettings(model.Schema):
         required=False,
         # default=False,
         )
-
-    # anonymous_comments = schema.Bool(
-    #     title=_(u"label_anonymous_comments",
-    #             default="Enable anonymous comments"),
-    #     description=_(u"help_anonymous_comments",
-    #             default=u"If selected, anonymous users are able to post "
-    #                      "comments without loggin in. It is highly "
-    #                      "recommended to use a captcha solution to prevent "
-    #                      "spam if this setting is enabled."),
-    #     required=False,
-    #     default=False,
-    #     )
-
-    # moderation_enabled = schema.Bool(
-    #     title=_(u"label_moderation_enabled",
-    #             default="Enable comment moderation"),
-    #     description=_(u"help_moderation_enabled",
-    #             default=u"If selected, comments will enter a 'Pending' state "
-    #                      "in which they are invisible to the public. A user "
-    #                      "with the 'Review comments' permission ('Reviewer' "
-    #                      "or 'Manager') can approve comments to make them "
-    #                      "visible to the public. If you want to enable a "
-    #                      "custom comment workflow, you have to go to the "
-    #                      "types control panel."),
-    #     required=False,
-    #     default=False,
-    #     )
-
-    # text_transform = schema.Choice(
-    #     title=_(u"label_text_transform",
-    #             default="Comment text transform"),
-    #     description=_(u"help_text_transform",
-    #             default=u"Use this setting to choose if the comment text " +
-    #                      "should be transformed in any way. You can choose "
-    #                      "between 'Plain text' and 'Intelligent text'. " +
-    #                      "'Intelligent text' converts plain text into HTML " +
-    #                      "where line breaks and indentation is preserved, " +
-    #                      "and web and email addresses are made into " +
-    #                      "clickable links."),
-    #     required=True,
-    #     default='text/plain',
-    #     vocabulary='plone.app.discussion.vocabularies.TextTransformVocabulary',
-    #     )
-
-    # captcha = schema.Choice(
-    #     title=_(u"label_captcha",
-    #             default="Captcha"),
-    #     description=_(u"help_captcha",
-    #             default=u"Use this setting to enable or disable Captcha "
-    #                      "validation for comments. Install "
-    #                      "plone.formwidget.captcha, "
-    #                      "plone.formwidget.recaptcha, collective.akismet, or "
-    #                      "collective.z3cform.norobots if there are no options "
-    #                      "available."),
-    #     required=True,
-    #     default='disabled',
-    #     vocabulary='plone.app.discussion.vocabularies.CaptchaVocabulary',
-    #     )
-
-    # show_commenter_image = schema.Bool(
-    #     title=_(u"label_show_commenter_image",
-    #             default=u"Show commenter image"),
-    #     description=_(u"help_show_commenter_image",
-    #             default=u"If selected, an image of the user is shown next to "
-    #                      "the comment."),
-    #     required=False,
-    #     default=True,
-    #     )
-
-    # moderator_notification_enabled = schema.Bool(
-    #     title=_(u"label_moderator_notification_enabled",
-    #             default=u"Enable moderator email notification"),
-    #     description=_(u"help_moderator_notification_enabled",
-    #             default=u"If selected, the moderator is notified if a comment "
-    #                      "needs attention. The moderator email address can " +
-    #                      "be found in the 'Mail settings' control panel "
-    #                      "(Site 'From' address)"),
-    #     required=False,
-    #     default=False,
-    #     )
-
-    # moderator_email = schema.ASCIILine(
-    #     title=_(u'label_moderator_email',
-    #               default=u'Moderator Email Address'),
-    #     description=_(u'help_moderator_email',
-    #                   default=u"Address to which moderator notifications "
-    #                           u"will be sent."),
-    #     required=False,
-    #     )
-
-    # user_notification_enabled = schema.Bool(
-    #     title=_(u"label_user_notification_enabled",
-    #     default=u"Enable user email notification"),
-    #     description=_(u"help_user_notification_enabled",
-    #                   default=u"If selected, users can choose to be notified "
-    #                            "of new comments by email."),
-    #     required=False,
-    #     default=False)
