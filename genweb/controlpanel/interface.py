@@ -65,8 +65,7 @@ class IGenwebControlPanelSettings(model.Schema):
         title=_(u"signatura_unitat_ca",
                 default=u"Signatura de la unitat [CA]"),
         description=_(u"help_signatura_unitat_ca",
-                default=u"És el literal que apareix al peu de pàgina o el text "
-                         "alternatiu del logotip (centres docents)."),
+                default=u"És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."),
         required=False,
         # default=False,
         )
@@ -75,8 +74,7 @@ class IGenwebControlPanelSettings(model.Schema):
         title=_(u"signatura_unitat_es",
                 default=u"Signatura de la unitat [ES]"),
         description=_(u"help_signatura_unitat_es",
-                default=u"És el literal que apareix al peu de pàgina o el text "
-                         "alternatiu del logotip (centres docents)."),
+                default=u"És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."),
         required=False,
         # default=False,
         )
@@ -85,8 +83,7 @@ class IGenwebControlPanelSettings(model.Schema):
         title=_(u"signatura_unitat_en",
                 default=u"Signatura de la unitat [EN]"),
         description=_(u"help_signatura_unitat_en",
-                default=u"És el literal que apareix al peu de pàgina o el text "
-                         "alternatiu del logotip (centres docents)."),
+                default=u"És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."),
         required=False,
         # default=False,
         )
@@ -95,8 +92,7 @@ class IGenwebControlPanelSettings(model.Schema):
         title=_(u"codi_altre_marca_ca",
                 default=u"Codi altre marca [CA]"),
         description=_(u"help_codi_altre_marca_ca",
-                default=u"Codi HTML amb l'enllaç i imatge de logotips a la dreta "
-                         "de la capçalera."),
+                default=u"Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."),
         required=False,
         # default=False,
         )
@@ -105,8 +101,7 @@ class IGenwebControlPanelSettings(model.Schema):
         title=_(u"codi_altre_marca_es",
                 default=u"Codi altre marca [ES]"),
         description=_(u"help_codi_altre_marca_es",
-                default=u"Codi HTML amb l'enllaç i imatge de logotips a la dreta "
-                         "de la capçalera."),
+                default=u"Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."),
         required=False,
         # default=False,
         )
@@ -115,8 +110,7 @@ class IGenwebControlPanelSettings(model.Schema):
         title=_(u"codi_altre_marca_en",
                 default=u"Codi altre marca [EN]"),
         description=_(u"help_codi_altre_marca_en",
-                default=u"Codi HTML amb l'enllaç i imatge de logotips a la dreta "
-                         "de la capçalera."),
+                default=u"Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."),
         required=False,
         # default=False,
         )
@@ -134,37 +128,34 @@ class IGenwebControlPanelSettings(model.Schema):
 
     contacte_BBBDD_or_page = schema.Bool(
         title=_(u"contacte_BBBDD_or_page",
-                default="Página de contacte personalitzada"),
+                default=u"Página de contacte personalitzada"),
         description=_(u"help_contacte_BBBDD_or_page",
-                default=u"Per defecte, la informació de contacte prové de la base "
-                         "de dades de SCP, sota petició."),
+                default=u"Per defecte, la informació de contacte prové de la base de dades de SCP, sota petició."),
         required=False,
         default=False,
         )
 
     contacte_al_peu = schema.Bool(
         title=_(u"contacte_al_peu",
-                default="Adreça de contacte al peu"),
+                default=u"Adreça de contacte al peu"),
         description=_(u"help_contacte_al_peu",
-                default=u"La informació provinent de la base de dades de SCP "
-                         "es visualitzen al peu de la pàgina."),
+                default=u"La informació provinent de la base de dades de SCP es visualitzen al peu de la pàgina."),
         required=False,
         default=False,
         )
 
     directori_upc = schema.Bool(
         title=_(u"directori_upc",
-                default="Directori UPC a les eines"),
+                default=u"Directori UPC a les eines"),
         description=_(u"help_directori_upc",
-                default=u"Es mostra l'enllaç al directori UPC a la barra d'eines "
-                         "La informació prové de la base de dades de SCP."),
+                default=u"Es mostra l'enllaç al directori UPC a la barra d'eines La informació prové de la base de dades de SCP."),
         required=False,
         default=False,
         )
 
     contacte_no_upcmaps = schema.Bool(
         title=_(u"contacte_no_upcmaps",
-                default="Contacte sense UPCmaps"),
+                default=u"Contacte sense UPCmaps"),
         description=_(u"help_contacte_no_upcmaps",
                 default=u"Es mostra la informació d'UPCmaps al contacte."),
         required=False,
