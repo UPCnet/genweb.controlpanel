@@ -18,7 +18,7 @@ class IGenwebControlPanelSettings(model.Schema):
 
     model.fieldset('Contact information',
                   _(u'Contact information'),
-                  fields=['contacte_id', 'contacte_BBBDD_or_page', 'contacte_al_peu',
+                  fields=['contacte_id', 'contacte_BBDD_or_page', 'contacte_al_peu',
                           'directori_upc', 'contacte_no_upcmaps'])
 
     model.fieldset('Specific',
@@ -126,7 +126,7 @@ class IGenwebControlPanelSettings(model.Schema):
         # default=False,
         )
 
-    contacte_BBBDD_or_page = schema.Bool(
+    contacte_BBDD_or_page = schema.Bool(
         title=_(u"contacte_BBBDD_or_page",
                 default=u"Página de contacte personalitzada"),
         description=_(u"help_contacte_BBBDD_or_page",
