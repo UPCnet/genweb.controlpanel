@@ -24,9 +24,10 @@ class IGenwebControlPanelSettings(model.Schema):
     model.fieldset('Specific',
                   _(u'Specific'),
                   fields=['especific1', 'especific2',
-                          'contrast_colors_bn', 'treu_imatge_capsalera', 'treu_menu_horitzontal',
+                          'treu_imatge_capsalera', 'treu_menu_horitzontal',
                           'treu_icones_xarxes_socials', 'amaga_identificacio',
-                          'idiomes_google_translate_link_ca', 'idiomes_google_translate_link_es', 'idiomes_google_translate_link_en'])
+                          'idiomes_google_translate_link_ca', 'idiomes_google_translate_link_es',
+                          'idiomes_google_translate_link_en'])
 
     model.fieldset('Master',
                   _(u'Master'),
@@ -41,7 +42,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Afegiu el títol del Genweb. Podeu incloure tags HTML"),
         required=False,
         # default=False,
-        )
+    )
 
     html_title_es = schema.TextLine(
         title=_(u"html_title_es",
@@ -50,7 +51,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Afegiu el títol del Genweb. Podeu incloure tags HTML"),
         required=False,
         # default=False,
-        )
+    )
 
     html_title_en = schema.TextLine(
         title=_(u"html_title_en",
@@ -59,7 +60,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Afegiu el títol del Genweb. Podeu incloure tags HTML."),
         required=False,
         # default=False,
-        )
+    )
 
     signatura_unitat_ca = schema.TextLine(
         title=_(u"signatura_unitat_ca",
@@ -68,7 +69,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."),
         required=False,
         # default=False,
-        )
+    )
 
     signatura_unitat_es = schema.TextLine(
         title=_(u"signatura_unitat_es",
@@ -77,7 +78,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."),
         required=False,
         # default=False,
-        )
+    )
 
     signatura_unitat_en = schema.TextLine(
         title=_(u"signatura_unitat_en",
@@ -86,34 +87,34 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."),
         required=False,
         # default=False,
-        )
+    )
 
     codi_altre_marca_ca = schema.TextLine(
         title=_(u"codi_altre_marca_ca",
-                default=u"Codi altre marca [CA]"),
+                default=u"Codi altra marca [CA]"),
         description=_(u"help_codi_altre_marca_ca",
                 default=u"Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."),
         required=False,
         # default=False,
-        )
+    )
 
     codi_altre_marca_es = schema.TextLine(
         title=_(u"codi_altre_marca_es",
-                default=u"Codi altre marca [ES]"),
+                default=u"Codi altra marca [ES]"),
         description=_(u"help_codi_altre_marca_es",
                 default=u"Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."),
         required=False,
         # default=False,
-        )
+    )
 
     codi_altre_marca_en = schema.TextLine(
         title=_(u"codi_altre_marca_en",
-                default=u"Codi altre marca [EN]"),
+                default=u"Codi altra marca [EN]"),
         description=_(u"help_codi_altre_marca_en",
                 default=u"Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."),
         required=False,
         # default=False,
-        )
+    )
 
     # Contact Information section
 
@@ -124,7 +125,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Afegiu el id de contacte de la base de dades de màsters."),
         required=False,
         # default=False,
-        )
+    )
 
     contacte_BBDD_or_page = schema.Bool(
         title=_(u"contacte_BBBDD_or_page",
@@ -133,7 +134,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Per defecte, la informació de contacte prové de la base de dades de SCP, sota petició."),
         required=False,
         default=False,
-        )
+    )
 
     contacte_al_peu = schema.Bool(
         title=_(u"contacte_al_peu",
@@ -142,7 +143,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"La informació provinent de la base de dades de SCP es visualitzen al peu de la pàgina."),
         required=False,
         default=False,
-        )
+    )
 
     directori_upc = schema.Bool(
         title=_(u"directori_upc",
@@ -151,7 +152,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Es mostra l'enllaç al directori UPC a la barra d'eines La informació prové de la base de dades de SCP."),
         required=False,
         default=False,
-        )
+    )
 
     contacte_no_upcmaps = schema.Bool(
         title=_(u"contacte_no_upcmaps",
@@ -160,7 +161,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Es mostra la informació d'UPCmaps al contacte."),
         required=False,
         default=False,
-        )
+    )
 
     # Specific section
 
@@ -171,7 +172,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Afegiu el color específic 1. És aquell que..."),
         required=False,
         # default=False,
-        )
+    )
 
     especific2 = schema.TextLine(
         title=_(u"especific2",
@@ -180,16 +181,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Afegiu el color específic 2. És aquell que..."),
         required=False,
         # default=False,
-        )
-
-    contrast_colors_bn = schema.Bool(
-        title=_(u"contrast_colors_bn",
-                default=u"Contrast de colors blanc/negre"),
-        description=_(u"help_contrast_colors_bn",
-                default=u"El contrast de colors ..."),
-        required=False,
-        default=False,
-        )
+    )
 
     treu_imatge_capsalera = schema.Bool(
         title=_(u"treu_imatge_capsalera",
@@ -198,7 +190,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Treiem la imatge de la capçalera per ..."),
         required=False,
         default=False,
-        )
+    )
 
     treu_menu_horitzontal = schema.Bool(
         title=_(u"treu_menu_horitzontal",
@@ -207,7 +199,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Treu el menú horitzontal ..."),
         required=False,
         default=False,
-        )
+    )
 
     treu_icones_xarxes_socials = schema.Bool(
         title=_(u"treu_icones_xarxes_socials",
@@ -216,7 +208,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Treu les icones per compartir en xarxes socials ..."),
         required=False,
         default=False,
-        )
+    )
 
     amaga_identificacio = schema.Bool(
         title=_(u"amaga_identificacio",
@@ -225,7 +217,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Amaga de les eines l'enllaç d'identificació ..."),
         required=False,
         default=False,
-        )
+    )
 
     idiomes_google_translate_link_ca = schema.Bool(
         title=_(u"idiomes_google_translate_link_ca",
@@ -234,7 +226,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Blabla ..."),
         required=False,
         default=False,
-        )
+    )
 
     idiomes_google_translate_link_es = schema.Bool(
         title=_(u"idiomes_google_translate_link_es",
@@ -243,7 +235,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Blabla ..."),
         required=False,
         default=False,
-        )
+    )
 
     idiomes_google_translate_link_en = schema.Bool(
         title=_(u"idiomes_google_translate_link_en",
@@ -252,7 +244,7 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Blabla ..."),
         required=False,
         default=False,
-        )
+    )
 
     # Master section
 
@@ -263,4 +255,4 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Afegiu el id de l'estudi de la base de dades de màsters."),
         required=False,
         # default=False,
-        )
+    )
