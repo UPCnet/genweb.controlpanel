@@ -26,6 +26,7 @@ class IGenwebControlPanelSettings(model.Schema):
                   fields=['especific1', 'especific2',
                           'treu_imatge_capsalera', 'treu_menu_horitzontal',
                           'treu_icones_xarxes_socials', 'amaga_identificacio',
+                          'idiomes_publicats',
                           'idiomes_google_translate_link_ca', 'idiomes_google_translate_link_es',
                           'idiomes_google_translate_link_en'])
 
@@ -244,6 +245,16 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Blabla ..."),
         required=False,
         default=False,
+    )
+
+    idiomes_publicats = schema.List(
+        title=_(u"idiomes_publicats",
+                default=u"Idiomes publicats al web"),
+        description=_(u"help_idiomes_publicats",
+                default=u"Aquests seran els idiomes publicats a la web, els idiomes no especificats no seran públics però seran visibles pels gestors (editors)."),
+        value_type=schema.Choice(vocabulary='plone.app.vocabularies.SupportedContentLanguages'),
+        required=False,
+        default=['ca']
     )
 
     # Master section

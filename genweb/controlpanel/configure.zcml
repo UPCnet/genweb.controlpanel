@@ -22,7 +22,7 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="genweb.controlpanel"
+      title="Genweb Control Panel"
       directory="profiles/default"
       description="Installs the genweb.controlpanel package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
