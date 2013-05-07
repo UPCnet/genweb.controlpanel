@@ -1,32 +1,19 @@
 # -*- coding: utf-8 -*-
-
-from Acquisition import aq_base, aq_inner
-
-from Products.CMFCore.utils import getToolByName
-
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
-from Products.statusmessages.interfaces import IStatusMessage
-
-from plone.app.controlpanel.interfaces import IConfigurationChangedEvent
+from z3c.form import button
 
 from plone.app.registry.browser import controlpanel
+# from plone.registry.interfaces import IRecordModifiedEvent
+# from plone.app.controlpanel.interfaces import IConfigurationChangedEvent
 
-from plone.registry.interfaces import IRegistry
-from plone.registry.interfaces import IRecordModifiedEvent
-
-from zope.component.hooks import getSite
-from zope.component import getMultiAdapter, queryUtility
-
-from z3c.form import button
-from z3c.form.browser.checkbox import SingleCheckBoxFieldWidget
+from Products.statusmessages.interfaces import IStatusMessage
+# from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
 from genweb.core import GenwebMessageFactory as _
 
 
 class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
-    """ Genweb settings form. """
+    """ Genweb settings form """
 
     schema = IGenwebControlPanelSettings
     id = "GenwebControlPanelSettingsForm"
@@ -60,7 +47,6 @@ class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
 
 
 class GenwebControlPanel(controlpanel.ControlPanelFormWrapper):
-    """Discussion settings control panel.
-    """
+    """ Genweb settings control panel """
     form = GenwebControlPanelSettingsForm
     # index = ViewPageTemplateFile('controlpanel.pt')
