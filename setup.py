@@ -3,17 +3,17 @@ import os
 
 version = '1.0b1'
 
+README = open("README.rst").read()
+HISTORY = open(os.path.join("docs", "HISTORY.rst")).read()
+
 setup(name='genweb.controlpanel',
       version=version,
       description="Package containing the Genweb UPC control panel.",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from
-      # http://pypi.python.org/pypi?:action=list_classifiers
+      long_description=README + "\n" + HISTORY,
       classifiers=[
-        "Framework :: Plone",
-        "Programming Language :: Python",
-        ],
+          "Framework :: Plone",
+          "Programming Language :: Python",
+      ],
       keywords='theme genweb plone',
       author='UPCnet Plone Team',
       author_email='plone.team@upcnet.es',
