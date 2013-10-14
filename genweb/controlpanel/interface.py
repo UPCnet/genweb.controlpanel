@@ -4,7 +4,6 @@ from plone.supermodel import model
 
 from genweb.core import GenwebMessageFactory as _
 
-
 class IGenwebControlPanelSettings(model.Schema):
     """ Global Genweb settings. This describes records stored in the
     configuration registry and obtainable via plone.registry.
@@ -18,8 +17,8 @@ class IGenwebControlPanelSettings(model.Schema):
 
     model.fieldset('Contact information',
                   _(u'Contact information'),
-                  fields=['contacte_id', 'contacte_BBDD_or_page', 'contacte_al_peu',
-                          'directori_upc', 'contacte_no_upcmaps'])
+                  fields=['contacte_id', 'contacte_BBDD_or_page','contacte_al_peu',
+                          'directori_upc','directori_filtrat', 'contacte_no_upcmaps'])
 
     model.fieldset('Specific',
                   _(u'Specific'),
@@ -150,7 +149,16 @@ class IGenwebControlPanelSettings(model.Schema):
         title=_(u"directori_upc",
                 default=u"Directori UPC a les eines"),
         description=_(u"help_directori_upc",
-                default=u"Es mostra l'enllaç al directori UPC a la barra d'eines La informació prové de la base de dades de SCP."),
+                default=u"Es mostrarà a la part superior l'enllaç al Directori UPC."),
+        required=False,
+        default=False,
+    )
+
+    directori_filtrat = schema.Bool(
+        title=_(u"directori_filtrat",
+                default=u"Directori UPC filtrat a les eines"),
+        description=_(u"help_directori_filtrat",
+                default=u"S'obrirà el Directori UPC, carregant les dades de la unitat."),
         required=False,
         default=False,
     )
