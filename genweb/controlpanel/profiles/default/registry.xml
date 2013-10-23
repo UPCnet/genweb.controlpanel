@@ -1,9 +1,4 @@
 <?xml version="1.0"?>
 <registry>
     <records interface="genweb.controlpanel.interface.IGenwebControlPanelSettings" />
-    <record name="genweb.controlpanel.directori_filtrat">
-        <field type="plone.registry.field.Bool">
-            <title>Directori Filtrat</title>
-        </field>
-    </record>
 </registry>
