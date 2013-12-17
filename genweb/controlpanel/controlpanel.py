@@ -15,7 +15,16 @@ from Products.CMFPlone.utils import _createObjectByType
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
 from genweb.core import GenwebMessageFactory as _
 from genweb.core.interfaces import IProtectedContent
-from genweb.packets.interfaces import IpacketDefinition
+
+import pkg_resources
+
+try:
+    pkg_resources.get_distribution('genweb.upc')
+except pkg_resources.DistributionNotFound:
+    IAMGENWEBUPC = False
+else:
+    IAMGENWEBUPC = True
+    from genweb.packets.interfaces import IpacketDefinition
 
 
 class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
@@ -41,16 +50,17 @@ class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
             return
         self.applyChanges(data)
 
-        if data.get('idestudi_master', False):
-            portal = getSite()
-            if not getattr(portal, 'informacio-general', False):
-                info_general = _createObjectByType('packet', portal, 'informacio-general', title=_(u"General information"))
-                adapter = getAdapter(info_general, IpacketDefinition, 'fitxa_master')
-                field_values = {u'codi_master': data['idestudi_master']}
-                adapter.packet_fields = field_values
-                adapter.packet_type = 'fitxa_master'
-                info_general.exclude_from_nav = True
-                alsoProvides(info_general, IProtectedContent)
+        if IAMGENWEBUPC:
+            if data.get('idestudi_master', False):
+                portal = getSite()
+                if not getattr(portal, 'informacio-general', False):
+                    info_general = _createObjectByType('packet', portal, 'informacio-general', title=_(u"General information"))
+                    adapter = getAdapter(info_general, IpacketDefinition, 'fitxa_master')
+                    field_values = {u'codi_master': data['idestudi_master']}
+                    adapter.packet_fields = field_values
+                    adapter.packet_type = 'fitxa_master'
+                    info_general.exclude_from_nav = True
+                    alsoProvides(info_general, IProtectedContent)
 
         IStatusMessage(self.request).addStatusMessage(_(u"Changes saved"),
                                                       "info")
