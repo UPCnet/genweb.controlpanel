@@ -11,6 +11,7 @@ from plone.app.registry.browser import controlpanel
 from Products.statusmessages.interfaces import IStatusMessage
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone.utils import _createObjectByType
+from Products.CMFCore.utils import getToolByName
 
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
 from genweb.core import GenwebMessageFactory as _
@@ -42,6 +43,13 @@ class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
     def updateWidgets(self):
         super(GenwebControlPanelSettingsForm, self).updateWidgets()
 
+    def setLanguageAndLink(self,items):
+        canonical,canonical_lang = items[0]
+        for item,language in items:
+            item.setLanguage(language)
+            if item!=canonical and canonical_lang not in item.getTranslations().keys():
+                item.addTranslationReference(canonical)
+
     @button.buttonAndHandler(_('Save'), name=None)
     def handleSave(self, action):
         data, errors = self.extractData()
@@ -51,25 +59,54 @@ class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
         self.applyChanges(data)
 
         if IAMGENWEBUPC:
+            
             if data.get('idestudi_master', False):
                 portal = getSite()
-                if not getattr(portal, 'informacio-general', False):
-                    info_general = _createObjectByType('packet', portal, 'informacio-general', title=_(u"General information"))
-                    adapter = getAdapter(info_general, IpacketDefinition, 'fitxa_master')
+                if getattr(portal, 'informacio-general', False): 
+                # Si fiquem un altre id, i ja existeix l'esborrem i el tornem a crear amb el nou id
+                    portal.manage_delObjects('informacio-general')
+                    portal.manage_delObjects('informacion-general')
+                    portal.manage_delObjects('general-information')
+
+                if not getattr(portal, 'informacio-general', False): 
+                # Com que ja no existeix, el creem
+
+                    lt = getToolByName(portal, 'portal_languages')
+                    currentLang=lt.getPreferredLanguage()
+
+                    info_ca = _createObjectByType('packet', portal, 'informacio-general', title=u"Informació general del Màster")
+                    info_es = _createObjectByType('packet', portal, 'informacion-general', title=u"Información general del Máster")
+                    info_en = _createObjectByType('packet', portal, 'general-information', title=u"General information of the Degree Studies")
+                    self.setLanguageAndLink([(info_ca,'ca'),(info_es,'es'),(info_en,'en')])
+
+                    adapter = getAdapter(info_ca, IpacketDefinition, 'fitxa_master')
                     field_values = {u'codi_master': data['idestudi_master']}
                     adapter.packet_fields = field_values
                     adapter.packet_type = 'fitxa_master'
-                    info_general.exclude_from_nav = True
-                    alsoProvides(info_general, IProtectedContent)
+                    info_ca.exclude_from_nav = True
+                    alsoProvides(info_ca, IProtectedContent)
 
-        IStatusMessage(self.request).addStatusMessage(_(u"Changes saved"),
-                                                      "info")
-        self.context.REQUEST.RESPONSE.redirect("@@genweb-controlpanel")
+                    adapter = getAdapter(info_es, IpacketDefinition, 'fitxa_master')
+                    field_values = {u'codi_master': data['idestudi_master']}
+                    adapter.packet_fields = field_values
+                    adapter.packet_type = 'fitxa_master'
+                    info_es.exclude_from_nav = True
+                    alsoProvides(info_es, IProtectedContent)
+
+                    adapter = getAdapter(info_en, IpacketDefinition, 'fitxa_master')
+                    field_values = {u'codi_master': data['idestudi_master']}
+                    adapter.packet_fields = field_values
+                    adapter.packet_type = 'fitxa_master'
+                    info_en.exclude_from_nav = True
+                    alsoProvides(info_en, IProtectedContent)
+
+                    IStatusMessage(self.request).addStatusMessage(_(u"Changes saved"), "info")
+                    self.context.REQUEST.RESPONSE.redirect("@@genweb-controlpanel")
+
 
     @button.buttonAndHandler(_('Cancel'), name='cancel')
     def handleCancel(self, action):
-        IStatusMessage(self.request).addStatusMessage(_(u"Edit cancelled"),
-                                                      "info")
+        IStatusMessage(self.request).addStatusMessage(_(u"Edit cancelled"), "info")
         self.request.response.redirect("%s/%s" % (self.context.absolute_url(),
                                                   self.control_panel_view))
 
