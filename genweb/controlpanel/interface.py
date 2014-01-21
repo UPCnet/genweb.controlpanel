@@ -26,6 +26,7 @@ class IGenwebControlPanelSettings(model.Schema):
                           'treu_imatge_capsalera', 'treu_menu_horitzontal',
                           'treu_icones_xarxes_socials', 'amaga_identificacio',
                           'idiomes_publicats',
+                          'languages_link_to_root',
                           'idiomes_google_translate_link_ca', 'idiomes_google_translate_link_es',
                           'idiomes_google_translate_link_en'])
 
@@ -263,6 +264,16 @@ class IGenwebControlPanelSettings(model.Schema):
         value_type=schema.Choice(vocabulary='plone.app.vocabularies.SupportedContentLanguages'),
         required=False,
         default=['ca']
+    )
+
+    # If selected, the languages link goes to the root, not shows the same content (default option)
+    languages_link_to_root = schema.Bool(
+        title=_(u"languages_link_to_root",
+                default=u"languages_link_to_root"),
+        description=_(u"help_languages_link_to_root",
+                default=u"help_languages_link_to_root"),
+        required=False,
+        default=False,
     )
 
     # Master section
