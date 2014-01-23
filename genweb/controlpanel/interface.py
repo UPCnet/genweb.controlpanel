@@ -26,9 +26,11 @@ class IGenwebControlPanelSettings(model.Schema):
                           'treu_imatge_capsalera', 'treu_menu_horitzontal',
                           'treu_icones_xarxes_socials', 'amaga_identificacio',
                           'idiomes_publicats',
-                          'languages_link_to_root',
-                          'idiomes_google_translate_link_ca', 'idiomes_google_translate_link_es',
-                          'idiomes_google_translate_link_en'])
+                          'languages_link_to_root',])
+
+                          # Disable GoogleTranslate
+                          # 'idiomes_google_translate_link_ca', 'idiomes_google_translate_link_es',
+                          # 'idiomes_google_translate_link_en'])
 
     model.fieldset('Master',
                   _(u'Master'),
@@ -229,32 +231,32 @@ class IGenwebControlPanelSettings(model.Schema):
         default=False,
     )
 
-    idiomes_google_translate_link_ca = schema.Bool(
-        title=_(u"idiomes_google_translate_link_ca",
-                default=u"Habilitar l'enllaç a la traducció automàtica de Google Translate [CA]"),
-        description=_(u"help_idiomes_google_translate_link_ca",
-                default=u"Blabla ..."),
-        required=False,
-        default=False,
-    )
+    # idiomes_google_translate_link_ca = schema.Bool(
+    #     title=_(u"idiomes_google_translate_link_ca",
+    #             default=u"Habilitar l'enllaç a la traducció automàtica de Google Translate [CA]"),
+    #     description=_(u"help_idiomes_google_translate_link_ca",
+    #             default=u"Blabla ..."),
+    #     required=False,
+    #     default=False,
+    # )
 
-    idiomes_google_translate_link_es = schema.Bool(
-        title=_(u"idiomes_google_translate_link_es",
-                default=u"Habilitar l'enllaç a la traducció automàtica de Google Translate [ES]"),
-        description=_(u"help_idiomes_google_translate_link_es",
-                default=u"Blabla ..."),
-        required=False,
-        default=False,
-    )
+    # idiomes_google_translate_link_es = schema.Bool(
+    #     title=_(u"idiomes_google_translate_link_es",
+    #             default=u"Habilitar l'enllaç a la traducció automàtica de Google Translate [ES]"),
+    #     description=_(u"help_idiomes_google_translate_link_es",
+    #             default=u"Blabla ..."),
+    #     required=False,
+    #     default=False,
+    # )
 
-    idiomes_google_translate_link_en = schema.Bool(
-        title=_(u"idiomes_google_translate_link_en",
-                default=u"Habilitar l'enllaç a la traducció automàtica de Google Translate [EN]"),
-        description=_(u"help_idiomes_google_translate_link_en",
-                default=u"Blabla ..."),
-        required=False,
-        default=False,
-    )
+    # idiomes_google_translate_link_en = schema.Bool(
+    #     title=_(u"idiomes_google_translate_link_en",
+    #             default=u"Habilitar l'enllaç a la traducció automàtica de Google Translate [EN]"),
+    #     description=_(u"help_idiomes_google_translate_link_en",
+    #             default=u"Blabla ..."),
+    #     required=False,
+    #     default=False,
+    # )
 
     idiomes_publicats = schema.List(
         title=_(u"idiomes_publicats",
