@@ -43,11 +43,11 @@ class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
     def updateWidgets(self):
         super(GenwebControlPanelSettingsForm, self).updateWidgets()
 
-    def setLanguageAndLink(self,items):
-        canonical,canonical_lang = items[0]
-        for item,language in items:
+    def setLanguageAndLink(self, items):
+        canonical, canonical_lang = items[0]
+        for item, language in items:
             item.setLanguage(language)
-            if item!=canonical and canonical_lang not in item.getTranslations().keys():
+            if item != canonical and canonical_lang not in item.getTranslations().keys():
                 item.addTranslationReference(canonical)
 
     @button.buttonAndHandler(_('Save'), name=None)
@@ -56,53 +56,61 @@ class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
         if errors:
             self.status = self.formErrorsMessage
             return
+
+        if data.get('create_packet'):
+            create_packet = True
+            data['create_packet'] = False
+
         self.applyChanges(data)
 
         if IAMGENWEBUPC:
-            
-            if data.get('idestudi_master', False):
+
+            if create_packet:
                 portal = getSite()
-                if getattr(portal, 'informacio-general', False): 
-                # Si fiquem un altre id, i ja existeix l'esborrem i el tornem a crear amb el nou id
+                # Reset, erase previous packets
+                if getattr(portal, 'informacio-general', False):
                     portal.manage_delObjects('informacio-general')
+                if getattr(portal, 'informacion-general', False):
                     portal.manage_delObjects('informacion-general')
+                if getattr(portal, 'general-information', False):
                     portal.manage_delObjects('general-information')
 
-                if not getattr(portal, 'informacio-general', False): 
                 # Com que ja no existeix, el creem
+                lt = getToolByName(portal, 'portal_languages')
+                currentLang = lt.getPreferredLanguage()
 
-                    lt = getToolByName(portal, 'portal_languages')
-                    currentLang=lt.getPreferredLanguage()
+                info_ca = _createObjectByType('packet', portal, 'informacio-general', title=u"Informació general del Màster")
+                info_es = _createObjectByType('packet', portal, 'informacion-general', title=u"Información general del Màster")
+                info_en = _createObjectByType('packet', portal, 'general-information', title=u"General information of the Degree Studies")
+                self.setLanguageAndLink([(info_ca, 'ca'), (info_es, 'es'), (info_en, 'en')])
 
-                    info_ca = _createObjectByType('packet', portal, 'informacio-general', title=u"Informació general del Màster")
-                    info_es = _createObjectByType('packet', portal, 'informacion-general', title=u"Información general del Máster")
-                    info_en = _createObjectByType('packet', portal, 'general-information', title=u"General information of the Degree Studies")
-                    self.setLanguageAndLink([(info_ca,'ca'),(info_es,'es'),(info_en,'en')])
+                adapter = getAdapter(info_ca, IpacketDefinition, 'fitxa_master')
+                field_values = {u'codi_master': data['idestudi_master']}
+                adapter.packet_fields = field_values
+                adapter.packet_type = 'fitxa_master'
+                adapter.packet_mapui = adapter.mapui
+                alsoProvides(info_ca, IProtectedContent)
 
-                    adapter = getAdapter(info_ca, IpacketDefinition, 'fitxa_master')
-                    field_values = {u'codi_master': data['idestudi_master']}
-                    adapter.packet_fields = field_values
-                    adapter.packet_type = 'fitxa_master'
-                    info_ca.exclude_from_nav = True
-                    alsoProvides(info_ca, IProtectedContent)
+                adapter = getAdapter(info_es, IpacketDefinition, 'fitxa_master')
+                field_values = {u'codi_master': data['idestudi_master']}
+                adapter.packet_fields = field_values
+                adapter.packet_type = 'fitxa_master'
+                adapter.packet_mapui = adapter.mapui
+                alsoProvides(info_es, IProtectedContent)
 
-                    adapter = getAdapter(info_es, IpacketDefinition, 'fitxa_master')
-                    field_values = {u'codi_master': data['idestudi_master']}
-                    adapter.packet_fields = field_values
-                    adapter.packet_type = 'fitxa_master'
-                    info_es.exclude_from_nav = True
-                    alsoProvides(info_es, IProtectedContent)
+                adapter = getAdapter(info_en, IpacketDefinition, 'fitxa_master')
+                field_values = {u'codi_master': data['idestudi_master']}
+                adapter.packet_fields = field_values
+                adapter.packet_type = 'fitxa_master'
+                adapter.packet_mapui = adapter.mapui
+                alsoProvides(info_en, IProtectedContent)
 
-                    adapter = getAdapter(info_en, IpacketDefinition, 'fitxa_master')
-                    field_values = {u'codi_master': data['idestudi_master']}
-                    adapter.packet_fields = field_values
-                    adapter.packet_type = 'fitxa_master'
-                    info_en.exclude_from_nav = True
-                    alsoProvides(info_en, IProtectedContent)
+                info_ca.reindexObject()
+                info_en.reindexObject()
+                info_es.reindexObject()
 
-                    IStatusMessage(self.request).addStatusMessage(_(u"Changes saved"), "info")
-                    self.context.REQUEST.RESPONSE.redirect("@@genweb-controlpanel")
-
+                IStatusMessage(self.request).addStatusMessage(_(u"Changes saved"), "info")
+                self.context.REQUEST.RESPONSE.redirect("@@genweb-controlpanel")
 
     @button.buttonAndHandler(_('Cancel'), name='cancel')
     def handleCancel(self, action):

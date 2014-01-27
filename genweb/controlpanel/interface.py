@@ -4,6 +4,7 @@ from plone.supermodel import model
 
 from genweb.core import GenwebMessageFactory as _
 
+
 class IGenwebControlPanelSettings(model.Schema):
     """ Global Genweb settings. This describes records stored in the
     configuration registry and obtainable via plone.registry.
@@ -17,8 +18,8 @@ class IGenwebControlPanelSettings(model.Schema):
 
     model.fieldset('Contact information',
                   _(u'Contact information'),
-                  fields=['contacte_id', 'contacte_BBDD_or_page','contacte_al_peu',
-                          'directori_upc','directori_filtrat', 'contacte_no_upcmaps'])
+                  fields=['contacte_id', 'contacte_BBDD_or_page', 'contacte_al_peu',
+                          'directori_upc', 'directori_filtrat', 'contacte_no_upcmaps'])
 
     model.fieldset('Specific',
                   _(u'Specific'),
@@ -26,7 +27,7 @@ class IGenwebControlPanelSettings(model.Schema):
                           'treu_imatge_capsalera', 'treu_menu_horitzontal',
                           'treu_icones_xarxes_socials', 'amaga_identificacio',
                           'idiomes_publicats',
-                          'languages_link_to_root',])
+                          'languages_link_to_root'])
 
                           # Disable GoogleTranslate
                           # 'idiomes_google_translate_link_ca', 'idiomes_google_translate_link_es',
@@ -34,7 +35,7 @@ class IGenwebControlPanelSettings(model.Schema):
 
     model.fieldset('Master',
                   _(u'Master'),
-                  fields=['idestudi_master'])
+                  fields=['idestudi_master', 'create_packet'])
 
     # General section
 
@@ -287,4 +288,14 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Afegiu el id de l'estudi de la base de dades de màsters."),
         required=False,
         # default=False,
+    )
+
+    # Boolean that marks if a packet in the root folder should be created
+    create_packet = schema.Bool(
+        title=_(u"create_packet",
+                default=u"create_packet"),
+        description=_(u"help_create_packet",
+                default=u"help_create_packet"),
+        required=False,
+        default=False,
     )
