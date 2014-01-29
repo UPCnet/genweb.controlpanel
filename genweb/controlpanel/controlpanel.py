@@ -80,7 +80,7 @@ class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
                 currentLang = lt.getPreferredLanguage()
 
                 info_ca = _createObjectByType('packet', portal, 'informacio-general', title=u"Informació general del màster")
-                info_es = _createObjectByType('packet', portal, 'informacion-general', title=u"Información general del màster")
+                info_es = _createObjectByType('packet', portal, 'informacion-general', title=u"Información general del máster")
                 info_en = _createObjectByType('packet', portal, 'general-information', title=u"General information on the master's degree")
                 self.setLanguageAndLink([(info_ca, 'ca'), (info_es, 'es'), (info_en, 'en')])
 
