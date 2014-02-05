@@ -57,6 +57,7 @@ class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
             self.status = self.formErrorsMessage
             return
 
+        create_packet = False
         if data.get('create_packet'):
             create_packet = True
             data['create_packet'] = False
