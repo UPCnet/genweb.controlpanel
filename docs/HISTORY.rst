@@ -1,6 +1,37 @@
 Changelog
 =========
 
+1.0b2 (unreleased)
+------------------
+
+- Nothing changed yet.
+
+
+1.0b2 (unreleased)
+------------------
+
+ * Fix unbound variable [root]
+ * Oops... solved accent... [Roberto Diaz]
+ * new masters degree translations [Roberto Diaz]
+ * Improve create packet action [Victor Fernandez de Alba]
+ * Disable from ControlPanel GoogleTranslate option [Roberto Diaz]
+ * added language option "link to root" in control panel [Roberto Diaz]
+ * modified controlpanel to make usable masters option [Roberto Diaz]
+ * Conditionalize the import of genweb.packets interface [Victor Fernandez de Alba]
+ * Create the default packet in case that we are configuring a MAster flavour [Victor Fernandez de Alba]
+ * Corregir record incorrecto [Corina Riba]
+ * Crea registro directori_filtrat [Corina Riba]
+ * Añadir directorio filtrado y pagina de contacto personalizada. Traducciones [Corina Riba]
+ * Prepare to release [Victor Fernandez de Alba]
+ * House cleaning [Victor Fernandez de Alba]
+ * New configuration to support published languages [Victor Fernandez de Alba]
+ * New interfaces [Victor Fernandez de Alba]
+ * updated typo in fieldname [Victor Fernandez de Alba]
+ * Unicode problems solved [Víctor Fernández de Alba]
+ * Slight modifications to interface names and house cleansing [Victor Fernandez de Alba]
+ * Icon as a resource, new tests, complete interface for control panel [Victor Fernandez de Alba]
+ * Base control panel boilerplate and fieldsets in z3c.form registryControlPanel [Victor Fernandez de Alba]
+
 1.0b1 (2013-06-10)
 -------------------
 
