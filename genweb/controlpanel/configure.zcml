@@ -8,6 +8,8 @@
 
   <five:registerPackage package="." initialize=".initialize" />
 
+  <include package="genweb.core" />
+
   <browser:resource
       name="cpgenweb.png"
       file="cpgenweb.png"

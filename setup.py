@@ -25,6 +25,7 @@ setup(name='genweb.controlpanel',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'genweb.core',
           'plone.app.registry'
       ],
       entry_points="""
