@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.0b3 (unreleased)
+1.0b3 (2014-03-24)
 ------------------
 
-- Nothing changed yet.
-
+* Update dependencies for tests [Victor Fernandez de Alba]
+* Add manifest [Victor Fernandez de Alba]
 
 1.0b2 (2014-02-24)
 ------------------
