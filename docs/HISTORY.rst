@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.0b4 (unreleased)
+1.0b4 (2014-05-27)
 ------------------
 
-- Nothing changed yet.
-
+* Fix not to purge values on reinstall [Victor Fernandez de Alba]
 
 1.0b3 (2014-03-24)
 ------------------
