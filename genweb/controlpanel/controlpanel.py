@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
+from plone import api
 from z3c.form import button
 from zope.component.hooks import getSite
 from zope.component import getAdapter
 from zope.interface import alsoProvides
 
 from plone.app.registry.browser import controlpanel
-# from plone.registry.interfaces import IRecordModifiedEvent
-# from plone.app.controlpanel.interfaces import IConfigurationChangedEvent
+from plone.app.multilingual.interfaces import ITranslationManager
+from plone.dexterity.utils import createContentInContainer
 
 from Products.statusmessages.interfaces import IStatusMessage
-# from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFPlone.utils import _createObjectByType
 from Products.CMFCore.utils import getToolByName
 
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
@@ -43,12 +42,34 @@ class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
     def updateWidgets(self):
         super(GenwebControlPanelSettingsForm, self).updateWidgets()
 
-    def setLanguageAndLink(self, items):
-        canonical, canonical_lang = items[0]
-        for item, language in items:
-            item.setLanguage(language)
-            if item != canonical and canonical_lang not in item.getTranslations().keys():
-                item.addTranslationReference(canonical)
+    def link_translations(self, items):
+        """
+            Links the translations with the declared items with the form:
+            [(obj1, lang1), (obj2, lang2), ...] assuming that the first element
+            is the 'canonical' (in PAM there is no such thing).
+        """
+        # Grab the first item object and get its canonical handler
+        canonical = ITranslationManager(items[0][0])
+
+        for obj, language in items:
+            if not canonical.has_translation(language):
+                canonical.register_translation(language, obj)
+
+    def create_content(self, container, portal_type, id, **kwargs):
+        if not getattr(container, id, False):
+            obj = createContentInContainer(container, portal_type, checkConstraints=False, **kwargs)
+            self.publish_content(obj)
+        return getattr(container, id)
+
+    def publish_content(self, context):
+        """ Make the content visible either in both possible genweb.simple and
+            genweb.review workflows.
+        """
+        pw = getToolByName(context, "portal_workflow")
+        object_workflow = pw.getWorkflowsFor(context)[0].id
+        object_status = pw.getStatusOf(object_workflow, context)
+        if object_status:
+            api.content.transition(obj=context, transition={'genweb_simple': 'publish', 'genweb_review': 'publicaalaintranet'}[object_workflow])
 
     @button.buttonAndHandler(_('Save'), name=None)
     def handleSave(self, action):
@@ -69,21 +90,22 @@ class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
             if create_packet:
                 portal = getSite()
                 # Reset, erase previous packets
-                if getattr(portal, 'informacio-general', False):
+                if getattr(portal['ca'], 'informacio-general', False):
                     portal.manage_delObjects('informacio-general')
-                if getattr(portal, 'informacion-general', False):
+                if getattr(portal['es'], 'informacion-general', False):
                     portal.manage_delObjects('informacion-general')
-                if getattr(portal, 'general-information', False):
+                if getattr(portal['en'], 'general-information', False):
                     portal.manage_delObjects('general-information')
 
                 # Com que ja no existeix, el creem
-                lt = getToolByName(portal, 'portal_languages')
-                currentLang = lt.getPreferredLanguage()
+                info_ca = self.create_content(portal['ca'], 'packet', 'informacio-general', title=u"informacio-general")
+                info_ca.title = u"Informació general del màster"
+                info_es = self.create_content(portal['es'], 'packet', 'informacion-general', title=u"informacion-general")
+                info_es.title = u"Información general del máster"
+                info_en = self.create_content(portal['en'], 'packet', 'general-information', title=u"general-information")
+                info_en.title = u"General information on the master's degree"
 
-                info_ca = _createObjectByType('packet', portal, 'informacio-general', title=u"Informació general del màster")
-                info_es = _createObjectByType('packet', portal, 'informacion-general', title=u"Información general del máster")
-                info_en = _createObjectByType('packet', portal, 'general-information', title=u"General information on the master's degree")
-                self.setLanguageAndLink([(info_ca, 'ca'), (info_es, 'es'), (info_en, 'en')])
+                self.link_translations([(info_ca, 'ca'), (info_es, 'es'), (info_en, 'en')])
 
                 adapter = getAdapter(info_ca, IpacketDefinition, 'fitxa_master')
                 field_values = {u'codi_master': data['idestudi_master']}
