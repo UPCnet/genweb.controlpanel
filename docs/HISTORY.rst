@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.0b5 (unreleased)
+1.0b5 (2014-09-29)
 ------------------
 
-- Nothing changed yet.
-
+* PAM aware creation of packet [Victor Fernandez de Alba]
 
 1.0b4 (2014-05-27)
 ------------------
