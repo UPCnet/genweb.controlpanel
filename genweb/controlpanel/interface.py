@@ -14,7 +14,7 @@ class IGenwebControlPanelSettings(model.Schema):
                   _(u'General'),
                   fields=['html_title_ca', 'html_title_es', 'html_title_en',
                           'signatura_unitat_ca', 'signatura_unitat_es', 'signatura_unitat_en',
-                          'codi_altre_marca_ca', 'codi_altre_marca_es', 'codi_altre_marca_en'])
+                          'right_logo_enabled', 'right_logo_alt'])
 
     model.fieldset('Contact information',
                   _(u'Contact information'),
@@ -28,10 +28,6 @@ class IGenwebControlPanelSettings(model.Schema):
                           'treu_icones_xarxes_socials', 'amaga_identificacio',
                           'idiomes_publicats',
                           'languages_link_to_root'])
-
-                          # Disable GoogleTranslate
-                          # 'idiomes_google_translate_link_ca', 'idiomes_google_translate_link_es',
-                          # 'idiomes_google_translate_link_en'])
 
     model.fieldset('Master',
                   _(u'Master'),
@@ -93,31 +89,21 @@ class IGenwebControlPanelSettings(model.Schema):
         # default=False,
     )
 
-    codi_altre_marca_ca = schema.TextLine(
-        title=_(u"codi_altre_marca_ca",
-                default=u"Codi altra marca [CA]"),
-        description=_(u"help_codi_altre_marca_ca",
-                default=u"Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."),
+    right_logo_enabled = schema.Bool(
+        title=_(u"right_logo_enabled",
+                default=u"Mostrar logo dret"),
+        description=_(u"help_right_logo_enabled",
+                default=u"Mostra o no el logo dret de la capçalera."),
         required=False,
-        # default=False,
+        default=False,
     )
 
-    codi_altre_marca_es = schema.TextLine(
-        title=_(u"codi_altre_marca_es",
-                default=u"Codi altra marca [ES]"),
-        description=_(u"help_codi_altre_marca_es",
-                default=u"Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."),
+    right_logo_alt = schema.TextLine(
+        title=_(u"right_logo_alt",
+                default=u"Text alternatiu del logo dret"),
+        description=_(u"help_right_logo_alt",
+                default=u"Afegiu el text alternatiu (alt) del logo dret de la capçalera."),
         required=False,
-        # default=False,
-    )
-
-    codi_altre_marca_en = schema.TextLine(
-        title=_(u"codi_altre_marca_en",
-                default=u"Codi altra marca [EN]"),
-        description=_(u"help_codi_altre_marca_en",
-                default=u"Codi HTML amb l'enllaç i imatge de logotips a la dreta de la capçalera."),
-        required=False,
-        # default=False,
     )
 
     # Contact Information section
@@ -232,33 +218,6 @@ class IGenwebControlPanelSettings(model.Schema):
         default=False,
     )
 
-    # idiomes_google_translate_link_ca = schema.Bool(
-    #     title=_(u"idiomes_google_translate_link_ca",
-    #             default=u"Habilitar l'enllaç a la traducció automàtica de Google Translate [CA]"),
-    #     description=_(u"help_idiomes_google_translate_link_ca",
-    #             default=u"Blabla ..."),
-    #     required=False,
-    #     default=False,
-    # )
-
-    # idiomes_google_translate_link_es = schema.Bool(
-    #     title=_(u"idiomes_google_translate_link_es",
-    #             default=u"Habilitar l'enllaç a la traducció automàtica de Google Translate [ES]"),
-    #     description=_(u"help_idiomes_google_translate_link_es",
-    #             default=u"Blabla ..."),
-    #     required=False,
-    #     default=False,
-    # )
-
-    # idiomes_google_translate_link_en = schema.Bool(
-    #     title=_(u"idiomes_google_translate_link_en",
-    #             default=u"Habilitar l'enllaç a la traducció automàtica de Google Translate [EN]"),
-    #     description=_(u"help_idiomes_google_translate_link_en",
-    #             default=u"Blabla ..."),
-    #     required=False,
-    #     default=False,
-    # )
-
     idiomes_publicats = schema.List(
         title=_(u"idiomes_publicats",
                 default=u"Idiomes publicats al web"),
@@ -269,6 +228,7 @@ class IGenwebControlPanelSettings(model.Schema):
         default=['ca']
     )
 
+    # DEPRECATED, to delete as soon everybody is in GW4.4
     # If selected, the languages link goes to the root, not shows the same content (default option)
     languages_link_to_root = schema.Bool(
         title=_(u"languages_link_to_root",
@@ -293,7 +253,7 @@ class IGenwebControlPanelSettings(model.Schema):
     # Boolean that marks if a packet in the root folder should be created
     create_packet = schema.Bool(
         title=_(u"create_packet",
-                default=u"create_packet"),
+                default=u"Create packet UPC at root"),
         description=_(u"help_create_packet",
                 default=u"help_create_packet"),
         required=False,
