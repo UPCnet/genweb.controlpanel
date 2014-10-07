@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.0b6 (unreleased)
+1.0b6 (2014-10-07)
 ------------------
 
-- Nothing changed yet.
-
+* New options for show/hide right logo [Victor Fernandez de Alba]
 
 1.0b5 (2014-09-29)
 ------------------
