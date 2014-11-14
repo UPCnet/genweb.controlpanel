@@ -228,8 +228,6 @@ class IGenwebControlPanelSettings(model.Schema):
         default=['ca']
     )
 
-    # DEPRECATED, to delete as soon everybody is in GW4.4
-    # If selected, the languages link goes to the root, not shows the same content (default option)
     languages_link_to_root = schema.Bool(
         title=_(u"languages_link_to_root",
                 default=u"languages_link_to_root"),
