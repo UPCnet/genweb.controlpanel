@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.0b8 (unreleased)
+1.0b8 (2015-03-12)
 ------------------
 
-- Nothing changed yet.
-
+* Updated for not directly depend on PAM [Victor Fernandez de Alba]
 
 1.0b7 (2014-11-14)
 ------------------
