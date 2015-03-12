@@ -6,7 +6,6 @@ from zope.component import getAdapter
 from zope.interface import alsoProvides
 
 from plone.app.registry.browser import controlpanel
-from plone.app.multilingual.interfaces import ITranslationManager
 from plone.dexterity.utils import createContentInContainer
 
 from Products.statusmessages.interfaces import IStatusMessage
@@ -25,6 +24,7 @@ except pkg_resources.DistributionNotFound:
 else:
     IAMGENWEBUPC = True
     from genweb.packets.interfaces import IpacketDefinition
+    from plone.app.multilingual.interfaces import ITranslationManager
 
 
 class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
