@@ -22,6 +22,19 @@
     permission="cmf.ManagePortal"
     />
 
+  <browser:page
+    name="genweb-core-controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".core.GenwebCoreControlPanel"
+    permission="cmf.ManagePortal"
+    />
+
+  <utility
+    name="genweb.controlpanel.core.user_extenders"
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    component=".core.RegisteredExtendersVocabularyFactory"
+    />
+
   <genericsetup:registerProfile
       name="default"
       title="Genweb Control Panel"

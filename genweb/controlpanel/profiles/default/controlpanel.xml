@@ -8,4 +8,12 @@
     visible="True">
   <permission>Manage portal</permission>
  </configlet>
+ <configlet title="Genweb Core settings" action_id="genweb"
+    appId="genweb.core" category="Products"
+    condition_expr="python:True"
+    url_expr="string:${portal_url}/genweb-core-controlpanel"
+    icon_expr="string:$portal_url/++resource++cpgenweb.png"
+    visible="True">
+  <permission>Manage portal</permission>
+ </configlet>
 </object>

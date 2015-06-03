@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
 <registry>
+    <records interface="genweb.controlpanel.core.IGenwebCoreControlPanelSettings" purge="False" />
     <records interface="genweb.controlpanel.interface.IGenwebControlPanelSettings" purge="False" />
 </registry>
