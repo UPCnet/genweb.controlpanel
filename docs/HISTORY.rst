@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.0b9 (unreleased)
+1.0b9 (2015-06-10)
 ------------------
 
-- Nothing changed yet.
-
+* Add new Genweb Core control panel [Victor Fernandez de Alba]
 
 1.0b8 (2015-03-12)
 ------------------
