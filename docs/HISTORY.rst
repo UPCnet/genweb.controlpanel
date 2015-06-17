@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.0b10 (unreleased)
+1.0b10 (2015-06-17)
 -------------------
 
-- Nothing changed yet.
-
+* Fix same id for the control panels [Victor Fernandez de Alba]
+* Fix same id for the control panels [Victor Fernandez de Alba]
 
 1.0b9 (2015-06-10)
 ------------------
