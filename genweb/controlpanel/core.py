@@ -50,6 +50,14 @@ class IGenwebCoreControlPanelSettings(Interface):
         default=u''
     )
 
+    custom_editor_icons = schema.List(
+        title=_(u'Llista personalitzada d\'icones per l\'editor TinyMCE'),
+        description=_(u'Cada línia és una fila d\'icones. Si es deixa en blanc s\'agafen els valors per defecte. Han d\'omplir-se fins a 4 files obligatòriament.'),
+        value_type=schema.TextLine(),
+        required=False,
+        default=[]
+    )
+
 
 class GenwebCoreControlPanelSettingsForm(controlpanel.RegistryEditForm):
     """ Genweb settings form """
@@ -76,7 +84,7 @@ class GenwebCoreControlPanelSettingsForm(controlpanel.RegistryEditForm):
         self.applyChanges(data)
 
         IStatusMessage(self.request).addStatusMessage(_(u"Changes saved"), "info")
-        self.context.REQUEST.RESPONSE.redirect("@@genweb-controlpanel")
+        self.context.REQUEST.RESPONSE.redirect("@@genweb-core-controlpanel")
 
     @button.buttonAndHandler(_('Cancel'), name='cancel')
     def handleCancel(self, action):
