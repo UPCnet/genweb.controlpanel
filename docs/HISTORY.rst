@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.0b11 (unreleased)
+1.0b11 (2015-06-25)
 -------------------
 
-- Nothing changed yet.
-
+* Added new field for custom Tiny icons. [Victor Fernandez de Alba]
 
 1.0b10 (2015-06-17)
 -------------------
