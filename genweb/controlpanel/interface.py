@@ -14,7 +14,7 @@ class IGenwebControlPanelSettings(model.Schema):
                   _(u'General'),
                   fields=['html_title_ca', 'html_title_es', 'html_title_en',
                           'signatura_unitat_ca', 'signatura_unitat_es', 'signatura_unitat_en',
-                          'right_logo_enabled', 'right_logo_alt'])
+                          'right_logo_enabled', 'right_logo_alt', 'meta_author'])
 
     model.fieldset('Contact information',
                   _(u'Contact information'),
@@ -104,6 +104,13 @@ class IGenwebControlPanelSettings(model.Schema):
         description=_(u"help_right_logo_alt",
                 default=u"Afegiu el text alternatiu (alt) del logo dret de la capçalera."),
         required=False,
+    )
+
+    meta_author = schema.TextLine(
+        title=_(u'Meta author tag content'),
+        description=_(u'Contingut de la etiqueta meta \"author\"'),
+        required=False,
+        default=u'UPC. Universitat Politècnica de Catalunya'
     )
 
     # Contact Information section
