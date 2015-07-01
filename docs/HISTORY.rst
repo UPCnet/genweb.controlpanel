@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.0b12 (unreleased)
+1.0b12 (2015-07-01)
 -------------------
 
-- Nothing changed yet.
-
+* Add new field for meta tag author [Victor Fernandez de Alba]
 
 1.0b11 (2015-06-25)
 -------------------
