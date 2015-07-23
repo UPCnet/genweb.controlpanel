@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
-from plone import api
-from five import grok
+
 from zope import schema
 from zope.interface import Interface
 from z3c.form import button
-from plone.supermodel import model
 from zope.component import getUtilitiesFor
 from plone.app.registry.browser import controlpanel
-from zope.schema.interfaces import IContextSourceBinder
 from souper.interfaces import ICatalogFactory
 from zope.schema.vocabulary import SimpleVocabulary
-from zope.interface import directlyProvides
 
 from Products.statusmessages.interfaces import IStatusMessage
 

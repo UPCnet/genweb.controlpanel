@@ -26,7 +26,8 @@ setup(name='genweb.controlpanel',
       install_requires=[
           'setuptools',
           'genweb.core',
-          'plone.app.registry'
+          'plone.app.registry',
+          'collective.z3cform.datagridfield',
       ],
       entry_points="""
       # -*- Entry points: -*-
