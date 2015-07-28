@@ -8,8 +8,10 @@ from plone.directives import form
 from collective.z3cform.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield.registry import DictRow
 
+from zope.interface import Interface
 
-class ITableEmailContact(form.Schema):
+
+class ITableEmailContact(Interface):
     language = schema.Choice(
         title=_(u'Language'),
         vocabulary=u'plone.app.vocabularies.SupportedContentLanguages',
@@ -35,8 +37,7 @@ class IGenwebControlPanelSettings(model.Schema):
     model.fieldset('Contact information',
                   _(u'Contact information'),
                   fields=['contacte_id', 'contacte_BBDD_or_page', 'contacte_al_peu',
-                          'directori_upc', 'directori_filtrat', 'contacte_no_upcmaps', 'contacte_multi_email',
-                          'contact_emails_table'])
+                          'directori_upc', 'directori_filtrat', 'contacte_no_upcmaps', 'contacte_multi_email', ])
 
     model.fieldset('Specific',
                   _(u'Specific'),
@@ -195,14 +196,12 @@ class IGenwebControlPanelSettings(model.Schema):
         default=False,
     )
 
-    form.widget(contact_emails_table=DataGridFieldFactory)
-    contact_emails_table = schema.List(title=_(u'Contact emails'),
-                                       description=_(u'help_emails_table',
-                                       default=u'Add the emails by language'),
-                                       value_type=DictRow(title=_(u'help_email_table'),
-                                                          schema=ITableEmailContact),
-                                       required=False
-                                       )
+    # form.widget(contact_emails_table=DataGridFieldFactory)
+    # contact_emails_table = schema.List(title=_(u'Contact emails'),
+    #     description=_(u'help_emails_table', default=u'Add the emails by language'),
+    #     value_type=DictRow(title=_(u'help_email_table'), schema=ITableEmailContact),
+    #     required=False
+    # )
 
     # Specific section
 
