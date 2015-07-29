@@ -1,11 +1,12 @@
 Changelog
 =========
 
-1.0b13 (unreleased)
--------------------
+1.0 (2015-07-29)
+----------------
 
-- Nothing changed yet.
-
+* Revert datagridfield for contact form [Victor Fernandez de Alba]
+* Fix tests [Victor Fernandez de Alba]
+* Add Email contants [hanirok]
 
 1.0b12 (2015-07-01)
 -------------------
