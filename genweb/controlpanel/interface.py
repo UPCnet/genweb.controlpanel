@@ -189,9 +189,9 @@ class IGenwebControlPanelSettings(model.Schema):
 
     contacte_multi_email = schema.Bool(
         title=_(u"multi_email",
-                default=u"Es pot seleccionar l'adreça d'enviament"),
+                default=u"Seleccionar l'adreça d'enviament"),
         description=_(u"help_contacte_multi_email",
-                default=u"Si es selecciona aquesta opció es podà seleccionar a qui s'envia el missatge de contacte."),
+                default=u"Es pot seleccionar a qui s'envia el missatge de contacte."),
         required=False,
         default=False,
     )
