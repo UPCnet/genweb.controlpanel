@@ -4,24 +4,6 @@ from plone.supermodel import model
 
 from genweb.core import GenwebMessageFactory as _
 
-from plone.directives import form
-from collective.z3cform.datagridfield import DataGridFieldFactory
-from collective.z3cform.datagridfield.registry import DictRow
-
-from zope.interface import Interface
-
-
-class ITableEmailContact(Interface):
-    language = schema.Choice(
-        title=_(u'Language'),
-        vocabulary=u'plone.app.vocabularies.SupportedContentLanguages',
-        required=False
-    )
-    name = schema.TextLine(title=_(u'Name'),
-        required=False)
-    email = schema.TextLine(title=_(u'E-mail'),
-        required=False)
-
 
 class IGenwebControlPanelSettings(model.Schema):
     """ Global Genweb settings. This describes records stored in the
@@ -37,7 +19,7 @@ class IGenwebControlPanelSettings(model.Schema):
     model.fieldset('Contact information',
                   _(u'Contact information'),
                   fields=['contacte_id', 'contacte_BBDD_or_page', 'contacte_al_peu',
-                          'directori_upc', 'directori_filtrat', 'contacte_no_upcmaps', 'contacte_multi_email', ])
+                          'directori_upc', 'directori_filtrat', 'contacte_no_upcmaps', 'contacte_multi_email', 'contact_emails_data'])
 
     model.fieldset('Specific',
                   _(u'Specific'),
@@ -196,12 +178,13 @@ class IGenwebControlPanelSettings(model.Schema):
         default=False,
     )
 
-    # form.widget(contact_emails_table=DataGridFieldFactory)
-    # contact_emails_table = schema.List(title=_(u'Contact emails'),
-    #     description=_(u'help_emails_table', default=u'Add the emails by language'),
-    #     value_type=DictRow(title=_(u'help_email_table'), schema=ITableEmailContact),
-    #     required=False
-    # )
+    contact_emails_data = schema.Text(
+        title=_(u"contacte_mails",
+                default=u"Adreces de contacte"),
+        description=_(u"help_contacte_mails",
+                default=u"Dades de les adreces de contacte amb el següent format: {\"contacts\":[{\"language\": \"ca\",\"displayname\": \"blabla\",\"email\": \"blabla@gmail.com\"},{\"language\": \"es\",\"displayname\": \"holahola\",\"email\": \"holahola@gmail.com\"}]}"),
+        required=False,
+    )
 
     # Specific section
 
