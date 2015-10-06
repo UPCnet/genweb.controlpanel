@@ -4,6 +4,22 @@ from plone.supermodel import model
 
 from genweb.core import GenwebMessageFactory as _
 
+from plone.directives import form
+from collective.z3cform.datagridfield import DataGridFieldFactory
+from collective.z3cform.datagridfield.registry import DictRow
+
+
+class ITableEmailContact(form.Schema):
+    language = schema.Choice(
+        title=_(u'Language'),
+        vocabulary=u'plone.app.vocabularies.SupportedContentLanguages',
+        required=False
+    )
+    name = schema.TextLine(title=_(u'Name'),
+        required=False)
+    email = schema.TextLine(title=_(u'E-mail'),
+        required=False)
+
 
 class IGenwebControlPanelSettings(model.Schema):
     """ Global Genweb settings. This describes records stored in the
@@ -19,7 +35,8 @@ class IGenwebControlPanelSettings(model.Schema):
     model.fieldset('Contact information',
                   _(u'Contact information'),
                   fields=['contacte_id', 'contacte_BBDD_or_page', 'contacte_al_peu',
-                          'directori_upc', 'directori_filtrat', 'contacte_no_upcmaps', 'contacte_multi_email', 'contact_emails_data'])
+                          'directori_upc', 'directori_filtrat', 'contacte_no_upcmaps', 'contacte_multi_email',
+                          'contact_emails_table'])
 
     model.fieldset('Specific',
                   _(u'Specific'),
@@ -185,6 +202,24 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Dades de les adreces de contacte amb el següent format: {\"contacts\":[{\"language\": \"ca\",\"displayname\": \"blabla\",\"email\": \"blabla@gmail.com\"},{\"language\": \"es\",\"displayname\": \"holahola\",\"email\": \"holahola@gmail.com\"}]}"),
         required=False,
     )
+
+    contacte_multi_email = schema.Bool(
+        title=_(u"multi_email",
+                default=u"Es pot seleccionar l'adreça d'enviament"),
+        description=_(u"help_contacte_multi_email",
+                default=u"Si es selecciona aquesta opció es podà seleccionar a qui s'envia el missatge de contacte."),
+        required=False,
+        default=False,
+    )
+
+    form.widget(contact_emails_table=DataGridFieldFactory)
+    contact_emails_table = schema.List(title=_(u'Contact emails'),
+                                       description=_(u'help_emails_table',
+                                       default=u'Add the emails by language'),
+                                       value_type=DictRow(title=_(u'help_email_table'),
+                                                          schema=ITableEmailContact),
+                                       required=False
+                                       )
 
     # Specific section
 
