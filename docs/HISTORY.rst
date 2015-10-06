@@ -1,11 +1,12 @@
 Changelog
 =========
 
-1.1 (unreleased)
+1.1 (2015-10-06)
 ----------------
 
-- Nothing changed yet.
-
+* Bring back the datagridfield field in control panel [Victor Fernandez de Alba]
+* Add multi contact field [hanirok]
+* error in string [Roberto Diaz]
 
 1.0 (2015-07-29)
 ----------------
