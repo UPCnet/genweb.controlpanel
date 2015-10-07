@@ -195,14 +195,6 @@ class IGenwebControlPanelSettings(model.Schema):
         default=False,
     )
 
-    contact_emails_data = schema.Text(
-        title=_(u"contacte_mails",
-                default=u"Adreces de contacte"),
-        description=_(u"help_contacte_mails",
-                default=u"Dades de les adreces de contacte amb el següent format: {\"contacts\":[{\"language\": \"ca\",\"displayname\": \"blabla\",\"email\": \"blabla@gmail.com\"},{\"language\": \"es\",\"displayname\": \"holahola\",\"email\": \"holahola@gmail.com\"}]}"),
-        required=False,
-    )
-
     contacte_multi_email = schema.Bool(
         title=_(u"multi_email",
                 default=u"Es pot seleccionar l'adreça d'enviament"),
