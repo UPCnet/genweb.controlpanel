@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.2 (unreleased)
+1.2 (2015-10-21)
 ----------------
 
-- Nothing changed yet.
-
+* Delete Contact_emails_data duplicate [hanirok]
 
 1.1 (2015-10-06)
 ----------------
