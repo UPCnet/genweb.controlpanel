@@ -207,7 +207,7 @@ class IGenwebControlPanelSettings(model.Schema):
     form.widget(contact_emails_table=DataGridFieldFactory)
     contact_emails_table = schema.List(title=_(u'Contact emails'),
                                        description=_(u'help_emails_table',
-                                       default=u'Add the emails by language'),
+                                       default=u'Add name and email by language'),
                                        value_type=DictRow(title=_(u'help_email_table'),
                                                           schema=ITableEmailContact),
                                        required=False
