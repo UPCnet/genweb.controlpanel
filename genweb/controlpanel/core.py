@@ -7,10 +7,11 @@ from zope.component import getUtilitiesFor
 from plone.app.registry.browser import controlpanel
 from souper.interfaces import ICatalogFactory
 from zope.schema.vocabulary import SimpleVocabulary
-
+from zope.component import getUtility
 from Products.statusmessages.interfaces import IStatusMessage
 
 from genweb.core import GenwebMessageFactory as _
+from genweb.core.utilities import IElasticSearch
 
 import pkg_resources
 
@@ -54,6 +55,15 @@ class IGenwebCoreControlPanelSettings(Interface):
         default=[]
     )
 
+    elasticsearch = schema.TextLine(
+        title=_(u"elasticsearch",
+                default=u"ElasticSearch"),
+        description=_(u"elasticsearch_help",
+                default=u"URL del servidor d'ElasticSearch per aquest site"),
+        required=False,
+        default=u'localhost',
+    )
+
 
 class GenwebCoreControlPanelSettingsForm(controlpanel.RegistryEditForm):
     """ Genweb settings form """
@@ -78,6 +88,9 @@ class GenwebCoreControlPanelSettingsForm(controlpanel.RegistryEditForm):
             return
 
         self.applyChanges(data)
+
+        es = getUtility(IElasticSearch)
+        es.create_new_connection()
 
         IStatusMessage(self.request).addStatusMessage(_(u"Changes saved"), "info")
         self.context.REQUEST.RESPONSE.redirect("@@genweb-core-controlpanel")
