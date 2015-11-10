@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.3 (unreleased)
+1.3 (2015-11-10)
 ----------------
 
-- Nothing changed yet.
-
+* New elasticsearch conn [Victor Fernandez de Alba]
+* Literal [hanirok]
 
 1.2 (2015-10-21)
 ----------------
