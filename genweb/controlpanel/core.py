@@ -9,7 +9,7 @@ from souper.interfaces import ICatalogFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.component import getUtility
 from Products.statusmessages.interfaces import IStatusMessage
-
+from plone.supermodel import model
 from genweb.core import GenwebMessageFactory as _
 from genweb.core.utilities import IElasticSearch
 
@@ -40,6 +40,19 @@ class IGenwebCoreControlPanelSettings(Interface):
     configuration registry and obtainable via plone.registry.
     """
 
+    model.fieldset('General',
+                   (u'General'),
+                   fields=['user_properties_extender',
+                           'custom_editor_icons',
+                           'elasticsearch'])
+
+    model.fieldset('Ldap',
+                   (u'Ldap'),
+                   fields=['alt_ldap_uri',
+                           'alt_bind_dn',
+                           'alt_bindpasswd',
+                           'alt_base_dn'])
+
     user_properties_extender = schema.Choice(
         title=_(u'User properties extender'),
         vocabulary=u'genweb.controlpanel.core.user_extenders',
@@ -59,9 +72,45 @@ class IGenwebCoreControlPanelSettings(Interface):
         title=_(u"elasticsearch",
                 default=u"ElasticSearch"),
         description=_(u"elasticsearch_help",
-                default=u"URL del servidor d'ElasticSearch per aquest site"),
+                      default=u"URL del servidor d'ElasticSearch per aquest site"),
         required=False,
         default=u'localhost',
+    )
+
+    alt_ldap_uri = schema.TextLine(
+        title=_(u"alt_ldap_uri",
+                default=u"alt_ldap_uri"),
+        description=_(u"alt_ldap_uri_help",
+                      default=u"URL del servidor ldap per aquest site"),
+        required=False,
+        default=u'',
+    )
+
+    alt_bind_dn = schema.TextLine(
+        title=_(u"alt_bind_dn",
+                default=u"alt_bind_dn"),
+        description=_(u"alt_bind_dn_help",
+                      default=u"LDAP bind dn"),
+        required=False,
+        default=u'',
+    )
+
+    alt_bindpasswd = schema.TextLine(
+        title=_(u"alt_bindpasswd",
+                default=u"alt_bindpasswd"),
+        description=_(u"alt_bindpasswd_help",
+                      default=u"LDAP bind password"),
+        required=False,
+        default=u'',
+    )
+
+    alt_base_dn = schema.TextLine(
+        title=_(u"alt_base_dn",
+                default=u"alt_base_dn"),
+        description=_(u"alt_base_dn_help",
+                      default=u"LDAP base dn"),
+        required=False,
+        default=u'',
     )
 
 
