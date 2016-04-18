@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.4 (unreleased)
+1.4 (2016-04-18)
 ----------------
 
-- Nothing changed yet.
-
+* add ldap fields [Paco Gregori]
 
 1.3 (2015-11-10)
 ----------------
