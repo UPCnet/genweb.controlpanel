@@ -52,9 +52,9 @@ class IGenwebControlPanelSettings(model.Schema):
 
     model.fieldset('Custom Link',
                    _(u'Custom Link'),
-                   fields=['cl_title_es', 'cl_url_es', 'cl_img_es', 'cl_enable_es',
-                           'cl_title_ca', 'cl_url_ca', 'cl_img_ca', 'cl_enable_ca',
-                           'cl_title_en', 'cl_url_en', 'cl_img_en', 'cl_enable_en'])
+                   fields=['cl_title_ca', 'cl_url_ca', 'cl_img_ca', 'cl_open_new_window_ca', 'cl_enable_ca',
+                           'cl_title_es', 'cl_url_es', 'cl_img_es', 'cl_open_new_window_es', 'cl_enable_es',
+                           'cl_title_en', 'cl_url_en', 'cl_img_en', 'cl_open_new_window_en', 'cl_enable_en'])
 
     # General section
 
@@ -316,100 +316,128 @@ class IGenwebControlPanelSettings(model.Schema):
         )
 
     # Custom Link
-    cl_title_es = schema.TextLine(
-        title=_(u"cl_title_es",
-                default=u"Link title [ES]"),
-        description=_(u"help_cl_title_es",
-                      default=u"Literal de l'enllaç que es mostrarà al menu superior dret"),
-        required=False,
-        )
-
-    cl_url_es = schema.URI(
-        title=_(u"url_cl_es",
-                default=u"Enllaç per al menú superior"),
-        description=_(u"help_cl_url_es",
-                      default=u"URL de l'enllaç que es mostrarà al menu superior dret"),
-        required=False,
-        )
-
-    cl_img_es = schema.URI(
-        title=_(u"img_cl_es",
-                default=u"Enllaç per a la icona del menú superior"),
-        description=_(u"help_cl_img_es",
-                      default=u"URL de l'enllaç a la imatge que es mostrarà al menu superior dret"),
-        required=False,
-        )
-
-    cl_enable_es = schema.Bool(
-        title=_(u"cl_enable",
-                default=u"Publica l'enllaç customitzat"),
-        description=_(u"help_cl_enable_es",
-                      default=u"Selecciona per publicar l'enllaç"),
-        required=False,
-        default=False,
-        )
 
     cl_title_ca = schema.TextLine(
-        title=_(u"cl_title_ca",
+        title=_(u"cl_title",
                 default=u"Link title [CA]"),
-        description=_(u"help_cl_title_ca",
+        description=_(u"help_cl_title",
                       default=u"Literal de l'enllaç que es mostrarà al menu superior dret"),
         required=False,
         )
 
     cl_url_ca = schema.URI(
-        title=_(u"url_cl_ca",
+        title=_(u"url_cl",
                 default=u"Enllaç per al menú superior"),
-        description=_(u"help_cl_url_ca",
+        description=_(u"help_cl_url",
                       default=u"URL de l'enllaç que es mostrarà al menu superior dret"),
         required=False,
         )
 
     cl_img_ca = schema.URI(
-        title=_(u"img_cl_es",
+        title=_(u"img_cl",
                 default=u"Enllaç per a la icona del menú superior"),
-        description=_(u"help_cl_img_ca",
+        description=_(u"help_cl_img",
                       default=u"URL de l'enllaç a la imatge que es mostrarà al menu superior dret"),
         required=False,
+        )
+
+    cl_open_new_window_ca = schema.Bool(
+        title=_(u"cl_oinw",
+                default=u"Obre en una nova finestra"),
+        description=_(u"help_cl_oinw",
+                      default=u"Selecciona per obrir en una nova finestra"),
+        required=False,
+        default=False,
         )
 
     cl_enable_ca = schema.Bool(
         title=_(u"cl_enable",
                 default=u"Publica l'enllaç customitzat"),
-        description=_(u"help_cl_enable_ca",
+        description=_(u"help_cl_enable",
+                      default=u"Selecciona per publicar l'enllaç"),
+        required=False,
+        default=False,
+        )
+
+    cl_title_es = schema.TextLine(
+        title=_(u"cl_title",
+                default=u"Link title [ES]"),
+        description=_(u"help_cl_title",
+                      default=u"Literal de l'enllaç que es mostrarà al menu superior dret"),
+        required=False,
+        )
+
+    cl_url_es = schema.URI(
+        title=_(u"url_cl",
+                default=u"Enllaç per al menú superior"),
+        description=_(u"help_cl_url",
+                      default=u"URL de l'enllaç que es mostrarà al menu superior dret"),
+        required=False,
+        )
+
+    cl_img_es = schema.URI(
+        title=_(u"img_cl",
+                default=u"Enllaç per a la icona del menú superior"),
+        description=_(u"help_cl_img",
+                      default=u"URL de l'enllaç a la imatge que es mostrarà al menu superior dret"),
+        required=False,
+        )
+
+    cl_open_new_window_es = schema.Bool(
+        title=_(u"cl_oinw",
+                default=u"Obre en una nova finestra"),
+        description=_(u"help_cl_oinw",
+                      default=u"Selecciona per obrir en una nova finestra"),
+        required=False,
+        default=False,
+        )
+
+    cl_enable_es = schema.Bool(
+        title=_(u"cl_enable",
+                default=u"Publica l'enllaç customitzat"),
+        description=_(u"help_cl_enable",
                       default=u"Selecciona per publicar l'enllaç"),
         required=False,
         default=False,
         )
 
     cl_title_en = schema.TextLine(
-        title=_(u"cl_title_en",
+        title=_(u"cl_title",
                 default=u"Link title [EN]"),
-        description=_(u"help_cl_title_en",
+        description=_(u"help_cl_title",
                       default=u"Literal de l'enllaç que es mostrarà al menu superior dret"),
         required=False,
         )
 
     cl_url_en = schema.URI(
-        title=_(u"url_cl_en",
+        title=_(u"url_cl",
                 default=u"Enllaç per al menú superior"),
-        description=_(u"help_cl_url_en",
+        description=_(u"help_cl_url",
                       default=u"URL de l'enllaç que es mostrarà al menu superior dret"),
         required=False,
         )
 
     cl_img_en = schema.URI(
-        title=_(u"img_cl_es",
+        title=_(u"img_cl",
                 default=u"Enllaç per a la icona del menú superior"),
-        description=_(u"help_cl_img_en",
+        description=_(u"help_cl_img",
                       default=u"URL de l'enllaç a la imatge que es mostrarà al menu superior dret"),
         required=False,
+        )
+
+    cl_open_new_window_en = schema.Bool(
+        title=_(u"cl_oinw",
+                default=u"Obre en una nova finestra"),
+        description=_(u"help_cl_oinw",
+                      default=u"Selecciona per obrir en una nova finestra"),
+        required=False,
+        default=False,
         )
 
     cl_enable_en = schema.Bool(
         title=_(u"cl_enable",
                 default=u"Publica l'enllaç customitzat"),
-        description=_(u"help_cl_enable_en",
+        description=_(u"help_cl_enable",
                       default=u"Selecciona per publicar l'enllaç"),
         required=False,
         default=False,
