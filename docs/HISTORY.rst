@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.5 (unreleased)
+1.5 (2016-06-02)
 ----------------
 
-- Nothing changed yet.
-
+* Custom Link: first, target automatic, icon first [Corina Riba]
+* Add Custom Link in ControlPanel [Corina Riba]
 
 1.4 (2016-04-18)
 ----------------
