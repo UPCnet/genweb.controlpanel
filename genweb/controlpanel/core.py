@@ -51,7 +51,9 @@ class IGenwebCoreControlPanelSettings(Interface):
                    fields=['alt_ldap_uri',
                            'alt_bind_dn',
                            'alt_bindpasswd',
-                           'alt_base_dn'])
+                           'alt_base_dn',
+                           'groups_query',
+                           'user_groups_query'])
 
     user_properties_extender = schema.Choice(
         title=_(u'User properties extender'),
@@ -112,6 +114,26 @@ class IGenwebCoreControlPanelSettings(Interface):
         required=False,
         default=u'',
     )
+
+    groups_query = schema.TextLine(
+        title=_(u"groups_query",
+                default=u"groups_query"),
+        description=_(u"groups_query_help",
+                      default=u"LDAP groups query. Ex: (&(objectClass=groupOfNames))"),
+        required=False,
+        default=u'',
+    )
+
+    user_groups_query = schema.TextLine(
+        title=_(u"user_groups_query",
+                default=u"user_groups_query"),
+        description=_(u"user_groups_query_help",
+                      default=u"LDAP user groups query. Ex: (&(objectClass=groupOfNames)(member=%s))"),
+        required=False,
+        default=u'',
+    )
+
+
 
 
 class GenwebCoreControlPanelSettingsForm(controlpanel.RegistryEditForm):
