@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.6 (unreleased)
+1.6 (2016-10-05)
 ----------------
 
-- Nothing changed yet.
-
+* Añadir campos ldap para filtrar grupos [Pilar Marinas]
 
 1.5 (2016-06-02)
 ----------------
