@@ -14,7 +14,7 @@ class ITableEmailContact(form.Schema):
         title=_(u'Language'),
         vocabulary=u'plone.app.vocabularies.SupportedContentLanguages',
         required=False
-        )
+    )
     name = schema.TextLine(title=_(u'Name'),
                            required=False)
     email = schema.TextLine(title=_(u'E-mail'),
@@ -65,7 +65,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Afegiu el títol del Genweb. Podeu incloure tags HTML"),
         required=False,
         # default=False,
-        )
+    )
 
     html_title_es = schema.TextLine(
         title=_(u"html_title_es",
@@ -74,7 +74,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Afegiu el títol del Genweb. Podeu incloure tags HTML"),
         required=False,
         # default=False,
-        )
+    )
 
     html_title_en = schema.TextLine(
         title=_(u"html_title_en",
@@ -83,7 +83,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Afegiu el títol del Genweb. Podeu incloure tags HTML."),
         required=False,
         # default=False,
-        )
+    )
 
     signatura_unitat_ca = schema.TextLine(
         title=_(u"signatura_unitat_ca",
@@ -92,7 +92,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."),
         required=False,
         # default=False,
-        )
+    )
 
     signatura_unitat_es = schema.TextLine(
         title=_(u"signatura_unitat_es",
@@ -101,7 +101,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."),
         required=False,
         # default=False,
-        )
+    )
 
     signatura_unitat_en = schema.TextLine(
         title=_(u"signatura_unitat_en",
@@ -110,7 +110,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"És el literal que apareix al peu de pàgina o el text alternatiu del logotip (centres docents)."),
         required=False,
         # default=False,
-        )
+    )
 
     right_logo_enabled = schema.Bool(
         title=_(u"right_logo_enabled",
@@ -119,7 +119,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Mostra o no el logo dret de la capçalera."),
         required=False,
         default=False,
-        )
+    )
 
     right_logo_alt = schema.TextLine(
         title=_(u"right_logo_alt",
@@ -127,14 +127,14 @@ class IGenwebControlPanelSettings(model.Schema):
         description=_(u"help_right_logo_alt",
                       default=u"Afegiu el text alternatiu (alt) del logo dret de la capçalera."),
         required=False,
-        )
+    )
 
     meta_author = schema.TextLine(
         title=_(u'Meta author tag content'),
         description=_(u'Contingut de la etiqueta meta \"author\"'),
         required=False,
         default=u'UPC. Universitat Politècnica de Catalunya'
-        )
+    )
 
     # Contact Information section
 
@@ -145,7 +145,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Afegiu el id de contacte de la base de dades de màsters."),
         required=False,
         # default=False,
-        )
+    )
 
     contacte_BBDD_or_page = schema.Bool(
         title=_(u"contacte_BBBDD_or_page",
@@ -154,7 +154,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Per defecte, la informació de contacte prové de la base de dades de SCP, sota petició."),
         required=False,
         default=False,
-        )
+    )
 
     contacte_al_peu = schema.Bool(
         title=_(u"contacte_al_peu",
@@ -163,7 +163,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"La informació provinent de la base de dades de SCP es visualitzen al peu de la pàgina."),
         required=False,
         default=False,
-        )
+    )
 
     directori_upc = schema.Bool(
         title=_(u"directori_upc",
@@ -172,7 +172,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Es mostrarà a la part superior l'enllaç al Directori UPC."),
         required=False,
         default=False,
-        )
+    )
 
     directori_filtrat = schema.Bool(
         title=_(u"directori_filtrat",
@@ -181,7 +181,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"S'obrirà el Directori UPC, carregant les dades de la unitat."),
         required=False,
         default=False,
-        )
+    )
 
     contacte_no_upcmaps = schema.Bool(
         title=_(u"contacte_no_upcmaps",
@@ -190,7 +190,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Es mostra la informació d'UPCmaps al contacte."),
         required=False,
         default=False,
-        )
+    )
 
     contacte_multi_email = schema.Bool(
         title=_(u"multi_email",
@@ -199,16 +199,16 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Es pot seleccionar a qui s'envia el missatge de contacte."),
         required=False,
         default=False,
-        )
+    )
 
-    contacte_multi_email = schema.Bool(
-        title=_(u"multi_email",
-                default=u"Es pot seleccionar l'adreça d'enviament"),
-        description=_(u"help_contacte_multi_email",
-                      default=u"Si es selecciona aquesta opció es podà seleccionar a qui s'envia el missatge de contacte."),
-        required=False,
-        default=False,
-        )
+    # contacte_multi_email = schema.Bool(
+    #     title=_(u"multi_email",
+    #             default=u"Es pot seleccionar l'adreça d'enviament"),
+    #     description=_(u"help_contacte_multi_email",
+    #                   default=u"Si es selecciona aquesta opció es podà seleccionar a qui s'envia el missatge de contacte."),
+    #     required=False,
+    #     default=False,
+    #     )
 
     form.widget(contact_emails_table=DataGridFieldFactory)
     contact_emails_table = schema.List(title=_(u'Contact emails'),
@@ -228,7 +228,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Afegiu el color específic 1. És aquell que..."),
         required=False,
         # default=False,
-        )
+    )
 
     especific2 = schema.TextLine(
         title=_(u"especific2",
@@ -237,7 +237,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Afegiu el color específic 2. És aquell que..."),
         required=False,
         # default=False,
-        )
+    )
 
     treu_imatge_capsalera = schema.Bool(
         title=_(u"treu_imatge_capsalera",
@@ -246,7 +246,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Treiem la imatge de la capçalera per ..."),
         required=False,
         default=False,
-        )
+    )
 
     treu_menu_horitzontal = schema.Bool(
         title=_(u"treu_menu_horitzontal",
@@ -255,7 +255,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Treu el menú horitzontal ..."),
         required=False,
         default=False,
-        )
+    )
 
     treu_icones_xarxes_socials = schema.Bool(
         title=_(u"treu_icones_xarxes_socials",
@@ -264,7 +264,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Treu les icones per compartir en xarxes socials ..."),
         required=False,
         default=False,
-        )
+    )
 
     amaga_identificacio = schema.Bool(
         title=_(u"amaga_identificacio",
@@ -273,7 +273,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Amaga de les eines l'enllaç d'identificació ..."),
         required=False,
         default=False,
-        )
+    )
 
     idiomes_publicats = schema.List(
         title=_(u"idiomes_publicats",
@@ -283,7 +283,7 @@ class IGenwebControlPanelSettings(model.Schema):
         value_type=schema.Choice(vocabulary='plone.app.vocabularies.SupportedContentLanguages'),
         required=False,
         default=['ca']
-        )
+    )
 
     languages_link_to_root = schema.Bool(
         title=_(u"languages_link_to_root",
@@ -292,7 +292,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"help_languages_link_to_root"),
         required=False,
         default=False,
-        )
+    )
 
     # Master section
 
@@ -303,7 +303,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Afegiu el id de l'estudi de la base de dades de màsters."),
         required=False,
         # default=False,
-        )
+    )
 
     # Boolean that marks if a packet in the root folder should be created
     create_packet = schema.Bool(
@@ -313,7 +313,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"help_create_packet"),
         required=False,
         default=False,
-        )
+    )
 
     # Custom Link
 
@@ -323,7 +323,7 @@ class IGenwebControlPanelSettings(model.Schema):
         description=_(u"help_cl_title",
                       default=u"Literal de l'enllaç que es mostrarà al menu superior dret"),
         required=False,
-        )
+    )
 
     cl_url_ca = schema.URI(
         title=_(u"url_cl",
@@ -331,7 +331,7 @@ class IGenwebControlPanelSettings(model.Schema):
         description=_(u"help_cl_url",
                       default=u"URL de l'enllaç que es mostrarà al menu superior dret"),
         required=False,
-        )
+    )
 
     cl_img_ca = schema.URI(
         title=_(u"img_cl",
@@ -339,7 +339,7 @@ class IGenwebControlPanelSettings(model.Schema):
         description=_(u"help_cl_img",
                       default=u"URL de l'enllaç a la imatge que es mostrarà al menu superior dret"),
         required=False,
-        )
+    )
 
     cl_open_new_window_ca = schema.Bool(
         title=_(u"cl_oinw",
@@ -348,7 +348,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Selecciona per obrir en una nova finestra"),
         required=False,
         default=False,
-        )
+    )
 
     cl_enable_ca = schema.Bool(
         title=_(u"cl_enable",
@@ -357,7 +357,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Selecciona per publicar l'enllaç"),
         required=False,
         default=False,
-        )
+    )
 
     cl_title_es = schema.TextLine(
         title=_(u"cl_title",
@@ -365,7 +365,7 @@ class IGenwebControlPanelSettings(model.Schema):
         description=_(u"help_cl_title",
                       default=u"Literal de l'enllaç que es mostrarà al menu superior dret"),
         required=False,
-        )
+    )
 
     cl_url_es = schema.URI(
         title=_(u"url_cl",
@@ -373,7 +373,7 @@ class IGenwebControlPanelSettings(model.Schema):
         description=_(u"help_cl_url",
                       default=u"URL de l'enllaç que es mostrarà al menu superior dret"),
         required=False,
-        )
+    )
 
     cl_img_es = schema.URI(
         title=_(u"img_cl",
@@ -381,7 +381,7 @@ class IGenwebControlPanelSettings(model.Schema):
         description=_(u"help_cl_img",
                       default=u"URL de l'enllaç a la imatge que es mostrarà al menu superior dret"),
         required=False,
-        )
+    )
 
     cl_open_new_window_es = schema.Bool(
         title=_(u"cl_oinw",
@@ -390,7 +390,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Selecciona per obrir en una nova finestra"),
         required=False,
         default=False,
-        )
+    )
 
     cl_enable_es = schema.Bool(
         title=_(u"cl_enable",
@@ -399,7 +399,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Selecciona per publicar l'enllaç"),
         required=False,
         default=False,
-        )
+    )
 
     cl_title_en = schema.TextLine(
         title=_(u"cl_title",
@@ -407,7 +407,7 @@ class IGenwebControlPanelSettings(model.Schema):
         description=_(u"help_cl_title",
                       default=u"Literal de l'enllaç que es mostrarà al menu superior dret"),
         required=False,
-        )
+    )
 
     cl_url_en = schema.URI(
         title=_(u"url_cl",
@@ -415,7 +415,7 @@ class IGenwebControlPanelSettings(model.Schema):
         description=_(u"help_cl_url",
                       default=u"URL de l'enllaç que es mostrarà al menu superior dret"),
         required=False,
-        )
+    )
 
     cl_img_en = schema.URI(
         title=_(u"img_cl",
@@ -423,7 +423,7 @@ class IGenwebControlPanelSettings(model.Schema):
         description=_(u"help_cl_img",
                       default=u"URL de l'enllaç a la imatge que es mostrarà al menu superior dret"),
         required=False,
-        )
+    )
 
     cl_open_new_window_en = schema.Bool(
         title=_(u"cl_oinw",
@@ -432,7 +432,7 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Selecciona per obrir en una nova finestra"),
         required=False,
         default=False,
-        )
+    )
 
     cl_enable_en = schema.Bool(
         title=_(u"cl_enable",
@@ -441,4 +441,4 @@ class IGenwebControlPanelSettings(model.Schema):
                       default=u"Selecciona per publicar l'enllaç"),
         required=False,
         default=False,
-        )
+    )
