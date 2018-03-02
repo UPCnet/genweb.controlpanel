@@ -32,6 +32,7 @@ class RegisteredExtendersVocabulary(object):
             terms.append(SimpleVocabulary.createTerm(extender, str(extender), extender))
         return SimpleVocabulary(terms)
 
+
 RegisteredExtendersVocabularyFactory = RegisteredExtendersVocabulary()
 
 
@@ -134,14 +135,12 @@ class IGenwebCoreControlPanelSettings(Interface):
     )
 
 
-
-
 class GenwebCoreControlPanelSettingsForm(controlpanel.RegistryEditForm):
     """ Genweb settings form """
 
     schema = IGenwebCoreControlPanelSettings
     id = "GenwebCoreControlPanelSettingsForm"
-    label = _(u"Genweb Core settings")
+    label = _(u"Genweb Core")
     description = _(u"help_genweb_core_settings_editform",
                     default=u"Configuració de Genweb Core")
 

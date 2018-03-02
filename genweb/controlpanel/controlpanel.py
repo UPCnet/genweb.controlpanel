@@ -83,7 +83,26 @@ class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
             create_packet = True
             data['create_packet'] = False
 
-        self.applyChanges(data)
+        try:
+            self.applyChanges(data)
+        except:
+            from zope.component import getUtility
+            from plone.registry.interfaces import IRegistry
+            registry = getUtility(IRegistry)
+            rec = registry.records
+            keys = [a for a in rec.keys()]
+            for k in keys:
+                try:
+                    rec[k]
+                except:
+                    if k == 'genweb.controlpanel.interface.IGenwebControlPanelSettings.contact_emails_table':
+                        old_values = data['contact_emails_table']
+                        from plone.registry import Record, field
+                        from genweb.core import GenwebMessageFactory as _
+                        from collective.z3cform.datagridfield.registry import DictRow
+                        from genweb.controlpanel.interface import ITableEmailContact
+                        registry.records[k] = Record(field.List(title=_(u'Contact emails'), description=_(u'help_emails_table', default=u'Add name and email by language'), value_type=DictRow(title=_(u'help_email_table'), schema=ITableEmailContact), required=False))
+                        api.portal.set_registry_record(name='genweb.controlpanel.interface.IGenwebControlPanelSettings.contact_emails_table', value=old_values)
 
         if IAMGENWEBUPC:
 

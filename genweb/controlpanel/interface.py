@@ -201,15 +201,6 @@ class IGenwebControlPanelSettings(model.Schema):
         default=False,
     )
 
-    # contacte_multi_email = schema.Bool(
-    #     title=_(u"multi_email",
-    #             default=u"Es pot seleccionar l'adreça d'enviament"),
-    #     description=_(u"help_contacte_multi_email",
-    #                   default=u"Si es selecciona aquesta opció es podà seleccionar a qui s'envia el missatge de contacte."),
-    #     required=False,
-    #     default=False,
-    #     )
-
     form.widget(contact_emails_table=DataGridFieldFactory)
     contact_emails_table = schema.List(title=_(u'Contact emails'),
                                        description=_(u'help_emails_table',
