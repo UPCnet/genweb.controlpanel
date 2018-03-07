@@ -1,11 +1,12 @@
 Changelog
 =========
 
-1.7 (unreleased)
+1.7 (2018-03-07)
 ----------------
 
-- Nothing changed yet.
-
+* Added log message in controlpanel save value [Roberto Diaz]
+* SOLVED saving controlpanel and contact_emails_table with problematic values [Roberto Diaz]
+* Remove duplicated controlpanel value [Corina Riba]
 
 1.6 (2016-10-05)
 ----------------
