@@ -14,8 +14,11 @@ from Products.CMFCore.utils import getToolByName
 from genweb.controlpanel.interface import IGenwebControlPanelSettings
 from genweb.core import GenwebMessageFactory as _
 from genweb.core.interfaces import IProtectedContent
+import logging
 
 import pkg_resources
+genweb_log = logging.getLogger('genweb.core')
+
 
 try:
     pkg_resources.get_distribution('genweb.upc')
@@ -103,6 +106,7 @@ class GenwebControlPanelSettingsForm(controlpanel.RegistryEditForm):
                         from genweb.controlpanel.interface import ITableEmailContact
                         registry.records[k] = Record(field.List(title=_(u'Contact emails'), description=_(u'help_emails_table', default=u'Add name and email by language'), value_type=DictRow(title=_(u'help_email_table'), schema=ITableEmailContact), required=False))
                         api.portal.set_registry_record(name='genweb.controlpanel.interface.IGenwebControlPanelSettings.contact_emails_table', value=old_values)
+                        genweb_log.error('Errors in contropanel? Solved field contact_emails_table in ' + self.context.absolute_url())
 
         if IAMGENWEBUPC:
 
