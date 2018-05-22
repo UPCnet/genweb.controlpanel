@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.8 (unreleased)
+1.8 (2018-05-22)
 ----------------
 
-- Nothing changed yet.
-
+* Merge remote-tracking branch 'origin/develop' [Pilar Marinas]
+* added default user properties extender [Roberto Diaz]
 
 1.7 (2018-03-07)
 ----------------
