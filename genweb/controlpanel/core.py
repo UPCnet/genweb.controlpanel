@@ -27,6 +27,8 @@ class RegisteredExtendersVocabulary(object):
 
     def __call__(self, context):
         terms = []
+        empty = 'Not defined (DEFAULT)'
+        terms.append(SimpleVocabulary.createTerm(empty, str(empty), empty))
         extenders = [a[0] for a in getUtilitiesFor(ICatalogFactory) if a[0].startswith('user_properties') and a[0] != 'user_properties']
         for extender in extenders:
             terms.append(SimpleVocabulary.createTerm(extender, str(extender), extender))
@@ -59,8 +61,8 @@ class IGenwebCoreControlPanelSettings(Interface):
     user_properties_extender = schema.Choice(
         title=_(u'User properties extender'),
         vocabulary=u'genweb.controlpanel.core.user_extenders',
-        required=False,
-        default=u''
+        required=True,
+        default=u'Not defined (DEFAULT)'
     )
 
     custom_editor_icons = schema.List(
@@ -142,7 +144,7 @@ class GenwebCoreControlPanelSettingsForm(controlpanel.RegistryEditForm):
     id = "GenwebCoreControlPanelSettingsForm"
     label = _(u"Genweb Core")
     description = _(u"help_genweb_core_settings_editform",
-                    default=u"Configuració de Genweb Core")
+                    default=u"Paràmetres de configuració del paquet Genweb Core")
 
     def updateFields(self):
         super(GenwebCoreControlPanelSettingsForm, self).updateFields()
@@ -167,7 +169,7 @@ class GenwebCoreControlPanelSettingsForm(controlpanel.RegistryEditForm):
 
     @button.buttonAndHandler(_('Cancel'), name='cancel')
     def handleCancel(self, action):
-        IStatusMessage(self.request).addStatusMessage(_(u"Edit cancelled"), "info")
+        IStatusMessage(self.request).addStatusMessage(_(u"Modifications not saved"), "info")
         self.request.response.redirect("%s/%s" % (self.context.absolute_url(),
                                                   self.control_panel_view))
 
