@@ -56,6 +56,10 @@ class IGenwebControlPanelSettings(model.Schema):
                            'cl_title_es', 'cl_url_es', 'cl_img_es', 'cl_open_new_window_es', 'cl_enable_es',
                            'cl_title_en', 'cl_url_en', 'cl_img_en', 'cl_open_new_window_en', 'cl_enable_en'])
 
+    model.fieldset('Cookies',
+                   _(u'Cookies'),
+                   fields=['enable_cookiebot'])
+
     # General section
 
     html_title_ca = schema.TextLine(
@@ -430,6 +434,12 @@ class IGenwebControlPanelSettings(model.Schema):
                 default=u"Publica l'enllaç customitzat"),
         description=_(u"help_cl_enable",
                       default=u"Selecciona per publicar l'enllaç"),
+        required=False,
+        default=False,
+    )
+
+    enable_cookiebot = schema.Bool(
+        title=_(u"enable_cookiebot", default=u"Habilitar cookiebot"),
         required=False,
         default=False,
     )
